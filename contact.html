@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#333; }
+    header { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3); position:sticky; top:0; z-index:999; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    header.scrolled { padding:10px 40px; box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5); }
+    .logo-container { display:flex; flex-direction:column; gap:2px; }
+    header h1 { margin:0; font-size:24px; }
+    .header-tagline { font-size:11px; color:#ffd166; font-weight:500; letter-spacing:1px; text-transform:uppercase; }
+    nav { display:flex; align-items:center; gap:20px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; transition:all 0.3s ease; }
+    nav a:hover { color:#ffd166; text-shadow: 0 0 10px rgba(255, 209, 102, 0.5); }
+    .call-btn { background:#f77f00; padding:10px 15px; border-radius:5px; color:#fff; text-decoration:none; transition:all 0.3s ease; }
+    
+    section { padding:50px 40px; }
+    h2.section-title { text-align:center; margin-bottom:30px; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-size:32px; font-weight:bold; letter-spacing:1px; position:relative; animation:fadeUp 0.8s ease forwards; opacity:0; padding-bottom:15px; }
+    h2.section-title::after { content:''; position:absolute; bottom:0; left:50%; width:0; height:3px; background:linear-gradient(90deg, #0f4c5c, #1b9c85); transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform:translateX(-50%); }
+    h2.section-title:hover::after { width:80px; }
+
+    .enquiry form { max-width:600px; margin:0 auto; background:#fff; padding:40px 30px; border-radius:12px; box-shadow:0 4px 24px rgba(15, 76, 92, 0.15); border:1px solid rgba(27, 156, 133, 0.1); animation:fadeUp 0.8s ease; }
+    .enquiry input, .enquiry select { width:100%; padding:14px; margin-bottom:18px; border:2px solid #e0e0e0; border-radius:8px; transition:all 0.3s ease; font-size:15px; box-sizing:border-box; }
+    .enquiry input:focus, .enquiry select:focus { outline:none; border-color:#1b9c85; box-shadow:0 0 0 3px rgba(27, 156, 133, 0.1), 0 0 8px rgba(27, 156, 133, 0.3); background:linear-gradient(to right, #ffffff, rgba(27, 156, 133, 0.02)); }
+    .enquiry button { width:100%; background:linear-gradient(135deg, #0f4c5c, #1b9c85); color:#fff; padding:14px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:1px; }
+    .enquiry button:hover { transform:translateY(-2px); box-shadow:0 6px 15px rgba(27, 156, 133, 0.4); }
+
+    footer { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:30px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; box-shadow: 0 -4px 15px rgba(15, 76, 92, 0.3); }
+    footer a { color:#ffd166; text-decoration:none; display:block; margin-bottom:8px; }
+
+    .floating { position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:10px; }
+    .floating a { background:#25d366; color:#fff; padding:12px; border-radius:50%; text-align:center; font-size:18px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:pulse 2s infinite; }
+    .floating a:hover { transform:scale(1.15); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+    @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+    .phone { background:#0f4c5c !important; }
+
+  /* Fade-in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  </style>
+  
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <h1>
+      <a href="index.html" style="color:#fff; text-decoration:none;">
+        THENDRAL PROPERTIES
+      </a>
+    </h1>
+    <span class="header-tagline">Trust Meets Living</span>
+  </div>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="properties.html">PROPERTIES</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<section id="contact" class="enquiry">
+  <h2 class="section-title">ENQUIRE NOW</h2>
+  <form>
+    <input type="text" placeholder="Name" required />
+    <input type="tel" placeholder="Mobile Number" required />
+    <input type="email" placeholder="Email" required />
+    <select required>
+      <option>Select City</option>
+      <option>Chennai</option>
+      <option>Coimbatore</option>
+      <option>Trichy</option>
+      <option>Tirunelveli</option>
+      <option>Madurai</option>
+      <option>Salem</option>
+      <option>Virudhunagar</option>
+      <option>Thanjavur</option>
+      <option>Kanyakumari</option>
+      <option>Thoothukudi</option>
+    </select>
+    <button type="submit">SUBMIT</button>
+  </form>
+</section>
+
+<footer>
+  <div>
+    <h3>GET IN TOUCH</h3>
+    <p>📞 +91 98765 43210</p>
+    <p>✉️ info@thendralproperties.com</p>
+  </div>
+  <div>
+    <h3>QUICK LINKS</h3>
+    <a href="index.html">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="about.html">About Us</a>
+  </div>
+<div class="copyright">
+    © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
+  </div>
+</footer>
+
+<div class="floating">
+  <a href="tel:+919876543210" class="phone">📞</a>
+</div>
+
+</body>
+</html>

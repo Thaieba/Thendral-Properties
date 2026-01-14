@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Properties | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#333; }
+    header { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3); position:sticky; top:0; z-index:999; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    header.scrolled { padding:10px 40px; box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5); }
+    .logo-container { display:flex; flex-direction:column; gap:2px; }
+    header h1 { margin:0; font-size:24px; }
+    .header-tagline { font-size:11px; color:#ffd166; font-weight:500; letter-spacing:1px; text-transform:uppercase; }
+    nav { display:flex; align-items:center; gap:20px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; transition:all 0.3s ease; }
+    nav a:hover { color:#ffd166; text-shadow: 0 0 10px rgba(255, 209, 102, 0.5); }
+    .search-container { display:flex; align-items:center; background:#ffffff; border-radius:25px; padding:8px 15px; transition:all 0.3s ease; }
+    .search-container input { border:none; outline:none; padding:8px 10px; width:150px; font-size:14px; background:transparent; }
+    .search-container input::placeholder { color:#999; }
+    .search-container button { background:#f77f00; border:none; color:#fff; padding:8px 15px; border-radius:20px; cursor:pointer; font-weight:bold; transition:all 0.3s ease; }
+    .search-container button:first-of-type { background:#1b9c85; color:#fff; }
+    .search-container button:first-of-type:hover { background:#0d7c6d; transform:scale(1.05); }
+    .search-container button:hover { background:#e67e0a; transform:scale(1.05); }
+    
+    section { padding:50px 40px; }
+    h2.section-title { text-align:center; margin-bottom:30px; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-size:32px; font-weight:bold; letter-spacing:1px; position:relative; animation:fadeUp 0.8s ease forwards; opacity:0; padding-bottom:15px; }
+    h2.section-title::after { content:''; position:absolute; bottom:0; left:50%; width:0; height:3px; background:linear-gradient(90deg, #0f4c5c, #1b9c85); transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform:translateX(-50%); }
+    h2.section-title:hover::after { width:80px; }
+
+    .filters { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:30px; }
+    .filters select { padding:10px; border-radius:5px; border:1px solid #ccc; }
+
+    .projects { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+    .card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.12); transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); position:relative; border:2px solid transparent; border-top:4px solid #1b9c85; animation:fadeUp 0.6s ease forwards; opacity:0; }
+    .card:nth-child(1) { animation-delay:0.1s; border-top-color:#1b9c85; }
+    .card:nth-child(2) { animation-delay:0.2s; border-top-color:#f77f00; }
+    .card:nth-child(3) { animation-delay:0.3s; border-top-color:#e63946; }
+    .card:nth-child(n+4) { animation-delay:0.4s; border-top-color:#0f4c5c; }
+    .card::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition:left 0.6s ease; z-index:1; }
+    .card:hover::before { left:100%; }
+    .card:hover { transform:translateY(-14px); box-shadow:0 24px 48px rgba(15, 76, 92, 0.3), 0 0 40px rgba(27, 156, 133, 0.25); border-color:rgba(27, 156, 133, 0.1); }
+    .card-image-wrapper { position:relative; overflow:hidden; }
+    .card img { width:100%; aspect-ratio: 16/9; object-fit:cover; display:block; transition:opacity 0.4s ease, transform 0.4s ease; cursor:pointer; }
+    .card img:hover { opacity:0.85; transform:scale(1.1); }
+    .card-body { padding:25px; }
+    .card-location { font-size:12px; color:#1b9c85; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:8px; }
+    .card-body h3 { margin:0 0 8px 0; font-size:22px; color:#0f4c5c; font-weight:700; line-height:1.3; }
+    .card-body p { color:#666; font-size:14px; margin:12px 0 15px 0; line-height:1.6; }
+    .card-meta { display:flex; justify-content:space-between; align-items:center; padding-top:15px; border-top:1px solid #f0f0f0; }
+    .card-stat { text-align:center; }
+    .card-stat-value { font-size:16px; font-weight:700; color:#0f4c5c; }
+    .card-stat-label { font-size:11px; color:#999; text-transform:uppercase; margin-top:3px; }
+    .badge { display:inline-block; padding:8px 14px; background:#2a9d8f; color:#fff; border-radius:25px; font-size:12px; font-weight:600; margin-bottom:0; }
+    .highlight-tag { position:absolute; top:15px; right:15px; background:linear-gradient(135deg, #f77f00, #fcbf49); color:#fff; padding:8px 16px; border-radius:25px; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; box-shadow:0 6px 16px rgba(247, 127, 0, 0.35); animation:pulse-tag 2s infinite; z-index:10; }
+    @keyframes pulse-tag { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.06); } }
+    .price { color:#e63946; font-weight:bold; margin-top:10px; }
+
+    footer { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:30px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; box-shadow: 0 -4px 15px rgba(15, 76, 92, 0.3); }
+    footer a { color:#ffd166; text-decoration:none; display:block; margin-bottom:8px; }
+
+    .floating { position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:10px; }
+    .floating a { background:#25d366; color:#fff; padding:12px; border-radius:50%; text-align:center; font-size:18px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:pulse 2s infinite; }
+    .floating a:hover { transform:scale(1.15); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+    @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+    .phone { background:#0f4c5c !important; }
+
+    
+    .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center; }
+    .modal-overlay.active { display:flex; }
+    .modal-content { background:#fff; border-radius:12px; padding:30px; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
+    .modal-close { position:absolute; top:15px; right:15px; background:#e63946; color:#fff; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:18px; font-weight:bold; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { background:#c1121f; }
+    .modal-title { color:#0f4c5c; font-size:24px; margin-bottom:20px; text-align:center; }
+    .modal-locations { list-style:none; padding:0; }
+    .modal-locations li { background:#f7f7f7; padding:15px; margin-bottom:15px; border-radius:8px; border-left:4px solid #2a9d8f; }
+    .modal-locations li h4 { margin:0 0 8px 0; color:#0f4c5c; font-size:18px; }
+    .modal-locations li p { margin:5px 0; color:#666; }
+    .card img { cursor:pointer; }
+
+    .enquiry-modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center; }
+    .enquiry-modal-overlay.active { display:flex; }
+    .enquiry-modal-content { background:#fff; border-radius:12px; padding:30px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
+    .enquiry-modal-close { position:absolute; top:15px; right:15px; background:#e63946; color:#fff; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:18px; font-weight:bold; display:flex; align-items:center; justify-content:center; }
+    .enquiry-modal-close:hover { background:#c1121f; }
+    .enquiry-modal-title { color:#0f4c5c; font-size:24px; margin-bottom:20px; text-align:center; }
+    .enquiry-form input, .enquiry-form select, .enquiry-form textarea { width:100%; padding:14px; margin-bottom:18px; border:2px solid #e0e0e0; border-radius:8px; transition:all 0.3s ease; font-size:15px; box-sizing:border-box; }
+    .enquiry-form input:focus, .enquiry-form select:focus, .enquiry-form textarea:focus { outline:none; border-color:#1b9c85; box-shadow:0 0 0 3px rgba(27, 156, 133, 0.1), 0 0 8px rgba(27, 156, 133, 0.3); background:linear-gradient(to right, #ffffff, rgba(27, 156, 133, 0.02)); }
+    .enquiry-form textarea { resize:vertical; min-height:100px; }
+    .enquiry-form button { width:100%; background:linear-gradient(135deg, #0f4c5c, #1b9c85); color:#fff; padding:14px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:1px; }
+    .enquiry-form button:hover { transform:translateY(-2px); box-shadow:0 6px 15px rgba(27, 156, 133, 0.4); }
+    .enquiry-btn { background:#f77f00; color:#fff; padding:10px 20px; border:none; border-radius:25px; font-size:14px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; margin-top:15px; }
+    .enquiry-btn:hover { background:#e67e0a; transform:scale(1.05); }
+  /* Fade-in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  </style>
+  
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <h1>
+      <a href="index.html" style="color:#fff; text-decoration:none;">
+        THENDRAL PROPERTIES
+      </a>
+    </h1>
+    <span class="header-tagline">Trust Meets Living</span>
+  </div>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="properties.html">PROPERTIES</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="contact.html">CONTACT</a>
+    <div class="search-container">
+      <input type="text" placeholder="Search projects..." id="searchInput">
+      <button onclick="searchProjects()">🔍</button>
+      <button onclick="viewAllProjects()" style="background:#1b9c85; margin-left:5px;">All</button>
+    </div>
+  </nav>
+</header>
+
+<section id="projects">
+  <h2 class="section-title">THENDRAL PROPERTIES PROJECTS</h2>
+
+  <div class="projects">
+  <div class="card city-card"
+     data-city="Chennai"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="60">
+  <span class="highlight-tag">⭐ Premium</span>
+  <div class="card-image-wrapper">
+    <img src="images/chennai.jpg" alt="Chennai Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Chennai</div>
+    <h3>Thendral Celestia</h3>
+    <p>Premium residential apartments with world-class amenities in the heart of Chennai</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-4 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹60L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Ready</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <div class="card city-card"
+     data-city="Coimbatore"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="70">
+  <span class="highlight-tag">🔥 Best Seller</span>
+  <div class="card-image-wrapper">
+    <img src="images/coimbatore.jpg" alt="Coimbatore Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Coimbatore</div>
+    <h3>Thendral Enclave</h3>
+    <p>Luxurious villas and apartments in Coimbatore's most sought-after location</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">3-5 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹70L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Available</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card city-card"
+     data-city="Trichy"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="55">
+  <span class="highlight-tag">💎 Exclusive</span>
+  <div class="card-image-wrapper">
+    <img src="images/trichy.jpg" alt="Trichy Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Trichy</div>
+    <h3>Thendral Elite</h3>
+    <p>Exclusive residential community with modern architecture and lifestyle amenities</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-3 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹55L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Launching</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <div class="card city-card"
+     data-city="Tirunelveli"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="50">
+  <span class="highlight-tag">🌟 Hot Deal</span>
+  <div class="card-image-wrapper">
+    <img src="images/tirunelveli.jpg" alt="Tirunelveli Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Tirunelveli</div>
+    <h3>Thendral Woods</h3>
+    <p>Premium plotted development with spacious villas in a serene environment</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-4 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹50L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Booking Open</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Madurai"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="60">
+  <span class="highlight-tag">✨ New Launch</span>
+  <div class="card-image-wrapper">
+    <img src="images/madurai.jpg" alt="Madurai Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Madurai</div>
+    <h3>Thendral Homes</h3>
+    <p>Latest residential complex featuring smart homes and eco-friendly design</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-3 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹60L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Pre-Launch</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Salem"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="45">
+  <span class="highlight-tag">🌿 Eco-Friendly</span>
+  <div class="card-image-wrapper">
+    <img src="images/salem.jpeg" alt="Salem Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Salem</div>
+    <h3>Thendral Gardens</h3>
+    <p>Eco-friendly residential apartments with green spaces and sustainable living in Salem</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-3 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹45L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Ready</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Virudhunagar"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="55">
+  <span class="highlight-tag">🏡 Family Homes</span>
+  <div class="card-image-wrapper">
+    <img src="images/virudhunagar.jpg" alt="Virudhunagar Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Virudhunagar</div>
+    <h3>Thendral Villas</h3>
+    <p>Spacious family villas with modern amenities in the peaceful surroundings of Virudhunagar</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">3-4 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹55L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Available</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Thanjavur"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="50">
+  <span class="highlight-tag">🏛️ Cultural Hub</span>
+  <div class="card-image-wrapper">
+    <img src="images/thanjavur.jpeg" alt="Thanjavur Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Thanjavur</div>
+    <h3>Thendral Heritage</h3>
+    <p>Heritage-inspired homes blending tradition and modernity in Thanjavur's cultural heart</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-4 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹50L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Launching</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Kanyakumari"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="65">
+  <span class="highlight-tag">🏖️ Seaside Living</span>
+  <div class="card-image-wrapper">
+    <img src="images/kanyakumari.jpg" alt="Kanyakumari Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Kanyakumari</div>
+    <h3>Thendral Beachfront</h3>
+    <p>Beachfront properties offering serene seaside living with stunning ocean views in Kanyakumari</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">2-3 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹65L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Booking Open</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card city-card"
+     data-city="Thoothukudi"
+     data-type="Mixed"
+     data-status="Multiple"
+     data-price="60">
+  <span class="highlight-tag">🚢 Waterfront</span>
+  <div class="card-image-wrapper">
+    <img src="images/thoothukudi.jpg" alt="Thoothukudi Real Estate" />
+  </div>
+  <div class="card-body">
+    <div class="card-location">Thoothukudi</div>
+    <h3>Thendral Marina</h3>
+    <p>Waterfront residences with marina views and premium amenities in Thoothukudi</p>
+    <div class="card-meta">
+      <div class="card-stat">
+        <div class="card-stat-value">3-5 BHK</div>
+        <div class="card-stat-label">Options</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">₹60L+</div>
+        <div class="card-stat-label">Starts at</div>
+      </div>
+      <div class="card-stat">
+        <div class="card-stat-value">Pre-Launch</div>
+        <div class="card-stat-label">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<div id="locationModal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <ul class="modal-locations" id="modalLocations"></ul>
+  </div>
+</div>
+
+
+
+<script>
+  const locationDetails = {
+    'Chennai': [
+      { name: 'T. Nagar', type: 'Apartments', status: 'Ready to Occupy', price: '₹90 Lakhs' },
+      { name: 'Pallavaram', type: 'Duplex Houses', status: 'Completed', price: '₹80 Lakhs' },
+      { name: 'Anna Nagar', type: 'Apartments', status: 'Under Construction', price: '₹60 Lakhs' }
+    ],
+    'Coimbatore': [
+      { name: 'RS Puram', type: 'Apartments', status: 'Ready to Occupy', price: '₹70 Lakhs' },
+      { name: 'Peelamedu', type: 'Duplex Houses', status: 'Completed', price: '₹85 Lakhs' },
+      { name: 'Saravanampatti', type: 'Villa', status: 'Under Construction', price: '₹1.1 Crores' }
+    ],
+    'Trichy': [
+      { name: 'Samayapuram', type: 'Apartments', status: 'Ready to Occupy', price: '₹55 Lakhs' },
+      { name: 'Melur', type: 'Duplex Houses', status: 'Completed', price: '₹70 Lakhs' },
+      { name: 'Srirangam', type: 'Villa', status: 'Under Construction', price: '₹95 Lakhs' }
+    ],
+    'Tirunelveli': [
+      { name: 'Palayamkottai', type: 'Apartment', status: 'Ready to Occupy', price: '₹50 Lakhs' },
+      { name: 'Vannarapettai', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
+      { name: 'Melapalayam', type: 'Villa', status: 'Under Construction', price: '₹85 Lakhs' }
+    ],
+    'Madurai': [
+      { name: 'KK Nagar', type: 'Apartment', status: 'Ready to Occupy', price: '₹60 Lakhs' },
+      { name: 'Anna Nagar', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
+      { name: 'Othakadai', type: 'Villa', status: 'Under Construction', price: '₹1.05 Crores' }
+    ],
+    'Salem': [
+      { name: 'Gugai', type: 'Apartments', status: 'Ready to Occupy', price: '₹45 Lakhs' },
+      { name: 'Fairlands', type: 'Duplex Houses', status: 'Completed', price: '₹60 Lakhs' },
+      { name: 'Suramangalam', type: 'Villa', status: 'Under Construction', price: '₹75 Lakhs' }
+    ],
+    'Virudhunagar': [
+      { name: 'Sivakasi', type: 'Apartments', status: 'Ready to Occupy', price: '₹55 Lakhs' },
+      { name: 'Aruppukkottai', type: 'Duplex Houses', status: 'Completed', price: '₹70 Lakhs' },
+      { name: 'Rajapalayam', type: 'Villa', status: 'Under Construction', price: '₹90 Lakhs' }
+    ],
+    'Thanjavur': [
+      { name: 'Kumbakonam', type: 'Apartments', status: 'Ready to Occupy', price: '₹50 Lakhs' },
+      { name: 'Papanasam', type: 'Duplex Houses', status: 'Completed', price: '₹65 Lakhs' },
+      { name: 'Thiruvaiyaru', type: 'Villa', status: 'Under Construction', price: '₹85 Lakhs' }
+    ],
+    'Kanyakumari': [
+      { name: 'Nagercoil', type: 'Apartments', status: 'Ready to Occupy', price: '₹65 Lakhs' },
+      { name: 'Marthandam', type: 'Duplex Houses', status: 'Completed', price: '₹80 Lakhs' },
+      { name: 'Kuzhithurai', type: 'Villa', status: 'Under Construction', price: '₹1.1 Crores' }
+    ],
+    'Thoothukudi': [
+      { name: 'Tiruchendur', type: 'Apartments', status: 'Ready to Occupy', price: '₹60 Lakhs' },
+      { name: 'Sathankulam', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
+      { name: 'Ottapidaram', type: 'Villa', status: 'Under Construction', price: '₹95 Lakhs' }
+    ]
+  };
+
+  function openModal(city) {
+    const modal = document.getElementById('locationModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalLocations = document.getElementById('modalLocations');
+    
+    const locations = locationDetails[city] || [];
+    
+    modalTitle.textContent = `${city} Projects - Location Details`;
+    modalLocations.innerHTML = '';
+    
+    locations.forEach(location => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <h4>${location.name} – ${location.type}</h4>
+        <p><strong>Status:</strong> ${location.status}</p>
+        <p><strong>Price:</strong> <span style="color:#e63946; font-weight:bold;">${location.price}</span></p>
+      `;
+      modalLocations.appendChild(li);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('locationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto'; 
+  }
+
+  document.getElementById('locationModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  
+  const cityCards = document.querySelectorAll('.city-card');
+  
+  cityCards.forEach(card => {
+    const img = card.querySelector('img');
+    if (img) {
+      img.addEventListener('click', function(e) {
+        e.stopPropagation(); 
+        const city = card.getAttribute('data-city');
+        openModal(city);
+      });
+    }
+  });
+
+  // Search functionality
+  function searchProjects() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.city-card');
+    let foundCount = 0;
+
+    if (searchValue === '') {
+      cards.forEach(card => card.style.display = 'block');
+      return;
+    }
+
+    cards.forEach(card => {
+      const city = card.getAttribute('data-city').toLowerCase();
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      const description = card.querySelector('p').textContent.toLowerCase();
+
+      if (city.includes(searchValue) || title.includes(searchValue) || description.includes(searchValue)) {
+        card.style.display = 'block';
+        foundCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (foundCount === 0) {
+      alert('No projects found matching your search.');
+    }
+
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Allow Enter key to search
+  document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      searchProjects();
+    }
+  });
+
+  // View all projects
+  function viewAllProjects() {
+    const cards = document.querySelectorAll('.city-card');
+    cards.forEach(card => card.style.display = 'block');
+    document.getElementById('searchInput').value = '';
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+  }
+
+</script>
+
+<footer>
+  <div>
+    <h3>GET IN TOUCH</h3>
+    <p>📞 +91 98765 43210</p>
+    <p>✉️ info@thendralproperties.com</p>
+  </div>
+  <div>
+    <h3>QUICK LINKS</h3>
+    <a href="index.html">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+<div class="copyright">
+    © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
+  </div>
+</footer>
+
+<div class="floating">
+  <a href="tel:+919876543210" class="phone">📞</a>
+</div>
+
+</body>
+</html>
