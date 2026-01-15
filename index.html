@@ -6,7 +6,7 @@
   <title>Home | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
   <style>
     html { scroll-behavior: smooth; }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#333; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 50%, #f7f7f7 100%); color:#333; min-height:100vh; }
     header { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3); position:sticky; top:0; z-index:999; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     header.scrolled { padding:10px 40px; box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5); }
     .logo-container { display:flex; flex-direction:column; gap:2px; }
@@ -285,6 +285,7 @@
     <span class="header-tagline">Trust Meets Living</span>
   </div>
   <nav>
+    <a href="login.html" id="login-link">LOGIN</a>
     <a href="index.html">HOME</a>
     <a href="properties.html">PROPERTIES</a>
     <a href="about.html">ABOUT US</a>
@@ -306,6 +307,17 @@
   </a>
 
 
+</section>
+
+<section id="customer-welcome" class="customer-welcome" style="display:none; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:60px 40px; text-align:center;">
+  <div class="welcome-card" style="background:rgba(255,255,255,0.1); padding:40px; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.2); max-width:800px; margin:0 auto; backdrop-filter:blur(10px);">
+    <h2 style="color:#fff; margin-bottom:20px; font-size:32px;">Welcome to Thendral Properties Portal</h2>
+    <p style="color:#f0f0f0; font-size:18px; margin-bottom:30px;">Explore our premium properties and find your dream home in Tamil Nadu.</p>
+    <div class="welcome-actions" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+      <a href="properties.html" style="background:#ffd166; color:#0f4c5c; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; transition:all 0.3s ease;">Browse Properties</a>
+      <a href="contact.html" style="background:#fff; color:#0f4c5c; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; transition:all 0.3s ease;">Contact Us</a>
+    </div>
+  </div>
 </section>
 
 
@@ -431,6 +443,36 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
+
+// Session Management
+window.onload = function() {
+  const loginLink = document.getElementById('login-link');
+  const userType = localStorage.getItem('userType');
+  const customerWelcome = document.getElementById('customer-welcome');
+
+  if (userType === 'customer') {
+    const userName = localStorage.getItem('userName') || 'User';
+    loginLink.textContent = `LOGOUT (${userName})`;
+    loginLink.href = '#';
+    loginLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('userType');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      window.location.href = 'index.html';
+    });
+    // Show customer welcome section
+    if (customerWelcome) {
+      customerWelcome.style.display = 'block';
+    }
+  } else if (userType === 'admin') {
+    // Redirect admin to admin portal
+    window.location.href = 'admin.html';
+  } else {
+    // Redirect to login page if not logged in
+    window.location.href = 'login.html';
+  }
+};
 
 </script>
 
