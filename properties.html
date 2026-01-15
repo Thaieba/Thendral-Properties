@@ -55,6 +55,8 @@
     .highlight-tag { position:absolute; top:15px; right:15px; background:linear-gradient(135deg, #f77f00, #fcbf49); color:#fff; padding:8px 16px; border-radius:25px; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; box-shadow:0 6px 16px rgba(247, 127, 0, 0.35); animation:pulse-tag 2s infinite; z-index:10; }
     @keyframes pulse-tag { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.06); } }
     .price { color:#e63946; font-weight:bold; margin-top:10px; }
+    .enquiry-btn { background:#f77f00; color:#fff; padding:10px 20px; border:none; border-radius:25px; font-size:14px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; margin-top:15px; }
+    .enquiry-btn:hover { background:#e67e0a; transform:scale(1.05); }
 
     footer { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:30px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; box-shadow: 0 -4px 15px rgba(15, 76, 92, 0.3); }
     footer a { color:#ffd166; text-decoration:none; display:block; margin-bottom:8px; }
@@ -161,6 +163,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Celestia')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -191,6 +194,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Enclave')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -221,6 +225,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Elite')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -251,6 +256,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Woods')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -281,6 +287,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Homes')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -311,6 +318,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Gardens')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -321,7 +329,7 @@
      data-price="55">
   <span class="highlight-tag">🏡 Family Homes</span>
   <div class="card-image-wrapper">
-    <img src="Virudhunagar.jpg" alt="Virudhunagar Real Estate" />
+    <img src="virudhunagar.jpg" alt="Virudhunagar Real Estate" />
   </div>
   <div class="card-body">
     <div class="card-location">Virudhunagar</div>
@@ -341,6 +349,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Villas')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -351,7 +360,7 @@
      data-price="50">
   <span class="highlight-tag">🏛️ Cultural Hub</span>
   <div class="card-image-wrapper">
-    <img src="Thanjavur.jpeg" alt="Thanjavur Real Estate" />
+    <img src="thanjavur.jpeg" alt="Thanjavur Real Estate" />
   </div>
   <div class="card-body">
     <div class="card-location">Thanjavur</div>
@@ -371,6 +380,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Heritage')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -381,7 +391,7 @@
      data-price="65">
   <span class="highlight-tag">🏖️ Seaside Living</span>
   <div class="card-image-wrapper">
-    <img src="Kanyakumari.jpg" alt="Kanyakumari Real Estate" />
+    <img src="kanyakumari.jpg" alt="Kanyakumari Real Estate" />
   </div>
   <div class="card-body">
     <div class="card-location">Kanyakumari</div>
@@ -411,7 +421,7 @@
      data-price="60">
   <span class="highlight-tag">🚢 Waterfront</span>
   <div class="card-image-wrapper">
-    <img src="Thoothukudi.jpg" alt="Thoothukudi Real Estate" />
+    <img src="thoothukudi.jpg" alt="Thoothukudi Real Estate" />
   </div>
   <div class="card-body">
     <div class="card-location">Thoothukudi</div>
@@ -431,6 +441,7 @@
         <div class="card-stat-label">Status</div>
       </div>
     </div>
+    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Marina')">ENQUIRE NOW</button>
   </div>
 </div>
 
@@ -445,7 +456,32 @@
   </div>
 </div>
 
-
+<div id="enquiryModal" class="enquiry-modal-overlay">
+  <div class="enquiry-modal-content">
+    <button class="enquiry-modal-close" onclick="closeEnquiryModal()">&times;</button>
+    <h2 class="enquiry-modal-title">Enquire About <span id="enquiryProjectName"></span></h2>
+    <form class="enquiry-form">
+      <input type="text" placeholder="Name" required>
+      <input type="tel" placeholder="Mobile Number" required>
+      <input type="email" placeholder="Email" required>
+      <select required>
+        <option>Select City</option>
+        <option>Chennai</option>
+        <option>Coimbatore</option>
+        <option>Trichy</option>
+        <option>Tirunelveli</option>
+        <option>Madurai</option>
+        <option>Salem</option>
+        <option>Virudhunagar</option>
+        <option>Thanjavur</option>
+        <option>Kanyakumari</option>
+        <option>Thoothukudi</option>
+      </select>
+      <textarea placeholder="Message" rows="4"></textarea>
+      <button type="submit">SUBMIT ENQUIRY</button>
+    </form>
+  </div>
+</div>
 
 <script>
   const locationDetails = {
@@ -604,6 +640,67 @@
     document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
   }
 
+  // Enquiry modal functions
+  function openEnquiryModal(projectName) {
+    document.getElementById('enquiryProjectName').textContent = projectName;
+    document.getElementById('enquiryModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEnquiryModal() {
+    document.getElementById('enquiryModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal on outside click
+  document.getElementById('enquiryModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeEnquiryModal();
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('enquiryModal').classList.contains('active')) {
+      closeEnquiryModal();
+    }
+  });
+
+</script>
+
+<script>
+// Session Management
+window.onload = function() {
+  const loginLink = document.querySelector('nav a[href="login.html"]');
+  const userType = localStorage.getItem('userType');
+
+  if (userType === 'customer') {
+    const userName = localStorage.getItem('userName') || 'User';
+    loginLink.textContent = `LOGOUT (${userName})`;
+    loginLink.href = '#';
+    loginLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('userType');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      window.location.href = 'index.html';
+    });
+  } else if (userType === 'admin') {
+    // Admin stays on properties page, add admin dashboard link
+    const nav = document.querySelector('nav');
+    const adminLink = document.createElement('a');
+    adminLink.href = 'admin.html';
+    adminLink.textContent = 'ADMIN DASHBOARD';
+    adminLink.style.color = '#ffd166';
+    adminLink.style.fontWeight = 'bold';
+    nav.appendChild(adminLink);
+  } else {
+    // Allow non-logged-in users to stay on the home page, redirect others to login
+    if (!window.location.pathname.includes('index.html')) {
+      window.location.href = 'login.html';
+    }
+  }
+};
 </script>
 
 <footer>
@@ -630,6 +727,3 @@
 
 </body>
 </html>
-
-
-
