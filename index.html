@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
+  <script>
+    // Redirect to login if not logged in
+    if (!localStorage.getItem('userType')) {
+      window.location.href = 'login.html';
+    }
+  </script>
   <style>
     html { scroll-behavior: smooth; }
     body { margin:0; font-family: Arial, Helvetica, sans-serif; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 50%, #f7f7f7 100%); color:#333; min-height:100vh; }
@@ -321,7 +327,6 @@
 </section>
 
 
-
 <section id="why-choose-us" class="trust-section">
   <h2 class="section-title">Why Choose Us</h2>
   <div class="trust-badges">
@@ -355,8 +360,6 @@
     </div>
   </div>
 </section>
-
-
 
 <footer>
   <div>
@@ -461,16 +464,20 @@ window.onload = function() {
       localStorage.removeItem('userName');
       window.location.href = 'index.html';
     });
-    // Show customer welcome section
-    if (customerWelcome) {
-      customerWelcome.style.display = 'block';
-    }
   } else if (userType === 'admin') {
-    // Redirect admin to admin portal
-    window.location.href = 'admin.html';
+    // Admin stays on home page, add admin dashboard link
+    const nav = document.querySelector('nav');
+    const adminLink = document.createElement('a');
+    adminLink.href = 'admin.html';
+    adminLink.textContent = 'ADMIN DASHBOARD';
+    adminLink.style.color = '#ffd166';
+    adminLink.style.fontWeight = 'bold';
+    nav.appendChild(adminLink);
   } else {
-    // Redirect to login page if not logged in
-    window.location.href = 'login.html';
+    // Redirect non-logged-in users to login page
+    if (window.location.pathname.split('/').pop() !== 'login.html') {
+      window.location.href = 'login.html';
+    }
   }
 };
 
