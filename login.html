@@ -45,7 +45,7 @@
   <div class="logo-container">
     <h1>
       <a href="index.html" style="color:#fff; text-decoration:none;">
-        THAIEBA PROPERTIES
+        THENDRAL PROPERTIES
       </a>
     </h1>
     <span class="header-tagline">Trust Meets Living</span>
@@ -135,7 +135,7 @@ document.addEventListener('submit', function(e) {
     if (username === adminCredentials.username && password === adminCredentials.password) {
       localStorage.setItem('userType', 'admin');
       localStorage.setItem('adminLoggedIn', 'true');
-      window.location.href = 'admin.html';
+      window.location.href = 'index.html';
     } else {
       errorMsg.textContent = 'Invalid username or password.';
     }
@@ -149,12 +149,10 @@ window.onload = function() {
     if (localStorage.getItem('userType') === 'customer') {
       window.location.href = 'index.html';
     } else if (localStorage.getItem('userType') === 'admin') {
-      window.location.href = 'admin.html';
+      window.location.href = 'index.html';
     }
   }
 };
 </script>
-
 </body>
 </html>
-
