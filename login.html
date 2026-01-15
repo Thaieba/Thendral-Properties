@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | THENDRAL PROPERTIES</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 50%, #f7f7f7 100%); color:#333; min-height:100vh; }
+    header { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3); position:sticky; top:0; z-index:999; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    header.scrolled { padding:10px 40px; box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5); }
+    .logo-container { display:flex; flex-direction:column; gap:2px; }
+    header h1 { margin:0; font-size:24px; }
+    .header-tagline { font-size:11px; color:#ffd166; font-weight:500; letter-spacing:1px; text-transform:uppercase; }
+    nav { display:flex; align-items:center; gap:20px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; transition:all 0.3s ease; }
+    nav a:hover { color:#ffd166; text-shadow: 0 0 10px rgba(255, 209, 102, 0.5); }
+
+    .login-section { padding:100px 40px; text-align:center; max-width:600px; margin:0 auto; animation:fadeInUp 1s ease forwards; opacity:0; }
+    .login-card { background:#fff; padding:40px; border-radius:12px; box-shadow:0 4px 24px rgba(15, 76, 92, 0.15); border:1px solid rgba(27, 156, 133, 0.1); animation:slideIn 0.8s ease 0.3s forwards; opacity:0; transform:translateY(30px); position:relative; overflow:hidden; }
+    .login-card::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation:shine 2s ease-in-out 1s; }
+    .login-card h2 { color:#0f4c5c; margin-bottom:30px; font-size:28px; animation:fadeIn 0.6s ease 0.5s forwards; opacity:0; }
+    .login-form input { width:100%; padding:14px; margin-bottom:18px; border:2px solid #e0e0e0; border-radius:8px; transition:all 0.3s ease; font-size:15px; box-sizing:border-box; animation:fadeIn 0.6s ease 0.7s forwards; opacity:0; }
+    .login-form input:focus { outline:none; border-color:#1b9c85; box-shadow:0 0 0 3px rgba(27, 156, 133, 0.1), 0 0 8px rgba(27, 156, 133, 0.3); transform:scale(1.02); }
+    .login-form button { width:100%; background:linear-gradient(135deg, #0f4c5c, #1b9c85); color:#fff; padding:14px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:1px; animation:fadeIn 0.6s ease 0.9s forwards; opacity:0; position:relative; overflow:hidden; }
+    .login-form button::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition:left 0.5s ease; }
+    .login-form button:hover::before { left:100%; }
+    .login-form button:hover { transform:translateY(-2px); box-shadow:0 6px 15px rgba(27, 156, 133, 0.4); }
+    .toggle-btn { background:#f77f00; color:#fff; padding:10px 20px; border:none; border-radius:8px; cursor:pointer; transition:all 0.3s ease; margin-top:15px; animation:fadeIn 0.6s ease 1.1s forwards; opacity:0; }
+    .toggle-btn:hover { background:#e67e0a; transform:translateY(-2px) scale(1.05); box-shadow:0 4px 12px rgba(247, 127, 0, 0.3); }
+    .error { color:#e63946; margin-top:10px; animation:shake 0.5s ease; }
+
+
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes slideIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes shine { 0% { left:-100%; } 100% { left:100%; } }
+    @keyframes shake { 0%, 100% { transform:translateX(0); } 25% { transform:translateX(-5px); } 75% { transform:translateX(5px); } }
+    @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <h1>
+      <a href="index.html" style="color:#fff; text-decoration:none;">
+        THENDRAL PROPERTIES
+      </a>
+    </h1>
+    <span class="header-tagline">Trust Meets Living</span>
+  </div>
+  <nav>
+    <a href="login.html">LOGIN</a>
+    <a href="index.html">HOME</a>
+    <a href="properties.html">PROPERTIES</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<section class="login-section">
+  <div class="login-card">
+    <h2 id="login-title">Customer Login</h2>
+    <form class="login-form" id="customer-login-form">
+      <input type="email" id="customer-email" placeholder="Email" required>
+      <input type="password" id="customer-password" placeholder="Password" required>
+      <button type="submit">Login as Customer</button>
+    </form>
+    <button class="toggle-btn" onclick="toggleLogin()">Switch to Admin Login</button>
+    <p class="error" id="error-msg"></p>
+  </div>
+</section>
+
+<script>
+// Simple user credentials (in production, use secure backend)
+const customerCredentials = {
+  email: 'customer@example.com',
+  password: 'customer123'
+};
+
+const adminCredentials = {
+  username: 'admin',
+  password: 'admin123'
+};
+
+let isCustomerLogin = true;
+
+function toggleLogin() {
+  const title = document.getElementById('login-title');
+  const form = document.getElementById('customer-login-form');
+  const button = document.querySelector('.toggle-btn');
+
+  if (isCustomerLogin) {
+    title.textContent = 'Admin Login';
+    form.innerHTML = `
+      <input type="text" id="admin-username" placeholder="Username" required>
+      <input type="password" id="admin-password" placeholder="Password" required>
+      <button type="submit">Login as Admin</button>
+    `;
+    button.textContent = 'Switch to Customer Login';
+    isCustomerLogin = false;
+  } else {
+    title.textContent = 'Customer Login';
+    form.innerHTML = `
+      <input type="email" id="customer-email" placeholder="Email" required>
+      <input type="password" id="customer-password" placeholder="Password" required>
+      <button type="submit">Login as Customer</button>
+    `;
+    button.textContent = 'Switch to Admin Login';
+    isCustomerLogin = true;
+  }
+}
+
+document.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const errorMsg = document.getElementById('error-msg');
+
+  if (isCustomerLogin) {
+    const email = document.getElementById('customer-email').value;
+    const password = document.getElementById('customer-password').value;
+
+    if (email === customerCredentials.email && password === customerCredentials.password) {
+      localStorage.setItem('userType', 'customer');
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', 'Customer User');
+      window.location.href = 'index.html';
+    } else {
+      errorMsg.textContent = 'Invalid email or password.';
+    }
+  } else {
+    const username = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
+
+    if (username === adminCredentials.username && password === adminCredentials.password) {
+      localStorage.setItem('userType', 'admin');
+      localStorage.setItem('adminLoggedIn', 'true');
+      window.location.href = 'admin.html';
+    } else {
+      errorMsg.textContent = 'Invalid username or password.';
+    }
+  }
+});
+
+// Check if user is already logged in
+window.onload = function() {
+  if (localStorage.getItem('userType')) {
+    // Redirect based on user type
+    if (localStorage.getItem('userType') === 'customer') {
+      window.location.href = 'index.html';
+    } else if (localStorage.getItem('userType') === 'admin') {
+      window.location.href = 'admin.html';
+    }
+  }
+};
+</script>
+
+</body>
+</html>
