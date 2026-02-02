@@ -1,704 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Browse Thendral Properties' premium real estate projects across Tamil Nadu. Find apartments, villas, and plots in Chennai, Coimbatore, Madurai, Trichy, Tirunelveli, Salem & more." />
   <title>Properties | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
   <link rel="stylesheet" href="properties.css">
-  
+
 </head>
+
 <body>
 
-<header>
-  <div class="logo-container">
-    <h1>
-      <a href="index.html" style="color:#fff; text-decoration:none;">
-        THENDRAL PROPERTIES
-      </a>
-    </h1>
-    <span class="header-tagline">Trust Meets Living</span>
-  </div>
-  <nav>
-    <a href="login.html">LOGIN</a>
-    <a href="index.html">HOME</a>
-    <a href="properties.html">PROPERTIES</a>
-    <a href="about.html">ABOUT US</a>
-    <a href="contact.html">CONTACT</a>
-    <div class="search-container">
-      <input type="text" placeholder="Search projects..." id="searchInput">
-      <button onclick="searchProjects()">🔍</button>
-      <button onclick="viewAllProjects()" style="background:#1b9c85; margin-left:5px;">All</button>
+  <header>
+    <div class="logo-container">
+      <h1>
+        <a href="index.html" style="color:#fff; text-decoration:none;">
+          THENDRAL PROPERTIES
+        </a>
+      </h1>
+      <span class="header-tagline">Trust Meets Living</span>
     </div>
-  </nav>
-</header>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="properties.html">PROPERTIES</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <div class="search-container">
+        <input type="text" placeholder="Search projects..." id="searchInput">
+        <button onclick="searchProjects()">🔍</button>
+        <button onclick="viewAllProjects()" style="background:#1b9c85; margin-left:5px;">All</button>
+      </div>
+    </nav>
+  </header>
 
-<section id="projects">
-  <h2 class="section-title">THENDRAL PROPERTIES PROJECTS</h2>
+  <section id="projects">
+    <h2 class="section-title">THENDRAL PROPERTIES PROJECTS</h2>
 
-  <div class="projects">
-  <div class="card city-card"
-     data-city="Chennai"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="60">
-  <span class="highlight-tag">⭐ Premium</span>
-  <div class="card-image-wrapper">
-    <img src="chennai.jpg" alt="Chennai Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Chennai</div>
-    <h3>Thendral Celestia</h3>
-    <p>Premium residential apartments with world-class amenities in the heart of Chennai</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-4 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹60L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Ready</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Celestia')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-   <div class="card city-card"
-     data-city="Coimbatore"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="70">
-  <span class="highlight-tag">🔥 Best Seller</span>
-  <div class="card-image-wrapper">
-    <img src="coimbatore.jpg" alt="Coimbatore Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Coimbatore</div>
-    <h3>Thendral Enclave</h3>
-    <p>Luxurious villas and apartments in Coimbatore's most sought-after location</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">3-5 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹70L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Available</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Enclave')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-<div class="card city-card"
-     data-city="Trichy"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="55">
-  <span class="highlight-tag">💎 Exclusive</span>
-  <div class="card-image-wrapper">
-    <img src="trichy.jpg" alt="Trichy Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Trichy</div>
-    <h3>Thendral Elite</h3>
-    <p>Exclusive residential community with modern architecture and lifestyle amenities</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-3 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹55L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Launching</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Elite')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-   <div class="card city-card"
-     data-city="Tirunelveli"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="50">
-  <span class="highlight-tag">🌟 Hot Deal</span>
-  <div class="card-image-wrapper">
-    <img src="tirunelveli.jpg" alt="Tirunelveli Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Tirunelveli</div>
-    <h3>Thendral Woods</h3>
-    <p>Premium plotted development with spacious villas in a serene environment</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-4 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹50L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Booking Open</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Woods')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Madurai"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="60">
-  <span class="highlight-tag">✨ New Launch</span>
-  <div class="card-image-wrapper">
-    <img src="madurai.jpg" alt="Madurai Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Madurai</div>
-    <h3>Thendral Homes</h3>
-    <p>Latest residential complex featuring smart homes and eco-friendly design</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-3 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹60L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Pre-Launch</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Homes')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Salem"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="45">
-  <span class="highlight-tag">🌿 Eco-Friendly</span>
-  <div class="card-image-wrapper">
-    <img src="salem.jpeg" alt="Salem Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Salem</div>
-    <h3>Thendral Gardens</h3>
-    <p>Eco-friendly residential apartments with green spaces and sustainable living in Salem</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-3 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹45L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Ready</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Gardens')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Virudhunagar"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="55">
-  <span class="highlight-tag">🏡 Family Homes</span>
-  <div class="card-image-wrapper">
-    <img src="Virudhunagar.jpg" alt="Virudhunagar Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Virudhunagar</div>
-    <h3>Thendral Villas</h3>
-    <p>Spacious family villas with modern amenities in the peaceful surroundings of Virudhunagar</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">3-4 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹55L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Available</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Villas')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Thanjavur"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="50">
-  <span class="highlight-tag">🏛️ Cultural Hub</span>
-  <div class="card-image-wrapper">
-    <img src="Thanjavur.jpeg" alt="Thanjavur Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Thanjavur</div>
-    <h3>Thendral Heritage</h3>
-    <p>Heritage-inspired homes blending tradition and modernity in Thanjavur's cultural heart</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-4 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹50L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Launching</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Heritage')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Kanyakumari"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="65">
-  <span class="highlight-tag">🏖️ Seaside Living</span>
-  <div class="card-image-wrapper">
-    <img src="Kanyakumari.jpg" alt="Kanyakumari Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Kanyakumari</div>
-    <h3>Thendral Beachfront</h3>
-    <p>Beachfront properties offering serene seaside living with stunning ocean views in Kanyakumari</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">2-3 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹65L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Booking Open</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Beachfront')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-    <div class="card city-card"
-     data-city="Thoothukudi"
-     data-type="Mixed"
-     data-status="Multiple"
-     data-price="60">
-  <span class="highlight-tag">🚢 Waterfront</span>
-  <div class="card-image-wrapper">
-    <img src="Thoothukudi.jpg" alt="Thoothukudi Real Estate" />
-  </div>
-  <div class="card-body">
-    <div class="card-location">Thoothukudi</div>
-    <h3>Thendral Marina</h3>
-    <p>Waterfront residences with marina views and premium amenities in Thoothukudi</p>
-    <div class="card-meta">
-      <div class="card-stat">
-        <div class="card-stat-value">3-5 BHK</div>
-        <div class="card-stat-label">Options</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">₹60L+</div>
-        <div class="card-stat-label">Starts at</div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-value">Pre-Launch</div>
-        <div class="card-stat-label">Status</div>
-      </div>
-    </div>
-    <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Marina')">ENQUIRE NOW</button>
-  </div>
-</div>
-
-  </div>
-</section>
-
-<div id="locationModal" class="modal-overlay">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <h2 class="modal-title" id="modalTitle"></h2>
-    <ul class="modal-locations" id="modalLocations"></ul>
-  </div>
-</div>
-
-<div id="enquiryModal" class="enquiry-modal-overlay">
-  <div class="enquiry-modal-content">
-    <button class="enquiry-modal-close" onclick="closeEnquiryModal()">&times;</button>
-    <h2 class="enquiry-modal-title">Enquire About <span id="enquiryProjectName"></span></h2>
-    <form class="enquiry-form">
-      <input type="text" placeholder="Name" required>
-      <input type="tel" placeholder="Mobile Number" required>
-      <input type="email" placeholder="Email" required>
-      <select required>
-        <option>Select City</option>
-        <option>Chennai</option>
-        <option>Coimbatore</option>
-        <option>Trichy</option>
-        <option>Tirunelveli</option>
-        <option>Madurai</option>
-        <option>Salem</option>
-        <option>Virudhunagar</option>
-        <option>Thanjavur</option>
-        <option>Kanyakumari</option>
-        <option>Thoothukudi</option>
-      </select>
-      <textarea placeholder="Message" rows="4"></textarea>
-      <button type="submit">SUBMIT ENQUIRY</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  const locationDetails = {
-    'Chennai': [
-      { name: 'T. Nagar', type: 'Apartments', status: 'Ready to Occupy', price: '₹90 Lakhs' },
-      { name: 'Pallavaram', type: 'Duplex Houses', status: 'Completed', price: '₹80 Lakhs' },
-      { name: 'Anna Nagar', type: 'Apartments', status: 'Under Construction', price: '₹60 Lakhs' }
-    ],
-    'Coimbatore': [
-      { name: 'RS Puram', type: 'Apartments', status: 'Ready to Occupy', price: '₹70 Lakhs' },
-      { name: 'Peelamedu', type: 'Duplex Houses', status: 'Completed', price: '₹85 Lakhs' },
-      { name: 'Saravanampatti', type: 'Villa', status: 'Under Construction', price: '₹1.1 Crores' }
-    ],
-    'Trichy': [
-      { name: 'Samayapuram', type: 'Apartments', status: 'Ready to Occupy', price: '₹55 Lakhs' },
-      { name: 'Melur', type: 'Duplex Houses', status: 'Completed', price: '₹70 Lakhs' },
-      { name: 'Srirangam', type: 'Villa', status: 'Under Construction', price: '₹95 Lakhs' }
-    ],
-    'Tirunelveli': [
-      { name: 'Palayamkottai', type: 'Apartment', status: 'Ready to Occupy', price: '₹50 Lakhs' },
-      { name: 'Vannarapettai', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
-      { name: 'Melapalayam', type: 'Villa', status: 'Under Construction', price: '₹85 Lakhs' }
-    ],
-    'Madurai': [
-      { name: 'KK Nagar', type: 'Apartment', status: 'Ready to Occupy', price: '₹60 Lakhs' },
-      { name: 'Anna Nagar', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
-      { name: 'Othakadai', type: 'Villa', status: 'Under Construction', price: '₹1.05 Crores' }
-    ],
-    'Salem': [
-      { name: 'Gugai', type: 'Apartments', status: 'Ready to Occupy', price: '₹45 Lakhs' },
-      { name: 'Fairlands', type: 'Duplex Houses', status: 'Completed', price: '₹60 Lakhs' },
-      { name: 'Suramangalam', type: 'Villa', status: 'Under Construction', price: '₹75 Lakhs' }
-    ],
-    'Virudhunagar': [
-      { name: 'Sivakasi', type: 'Apartments', status: 'Ready to Occupy', price: '₹55 Lakhs' },
-      { name: 'Aruppukkottai', type: 'Duplex Houses', status: 'Completed', price: '₹70 Lakhs' },
-      { name: 'Rajapalayam', type: 'Villa', status: 'Under Construction', price: '₹90 Lakhs' }
-    ],
-    'Thanjavur': [
-      { name: 'Kumbakonam', type: 'Apartments', status: 'Ready to Occupy', price: '₹50 Lakhs' },
-      { name: 'Papanasam', type: 'Duplex Houses', status: 'Completed', price: '₹65 Lakhs' },
-      { name: 'Thiruvaiyaru', type: 'Villa', status: 'Under Construction', price: '₹85 Lakhs' }
-    ],
-    'Kanyakumari': [
-      { name: 'Nagercoil', type: 'Apartments', status: 'Ready to Occupy', price: '₹65 Lakhs' },
-      { name: 'Marthandam', type: 'Duplex Houses', status: 'Completed', price: '₹80 Lakhs' },
-      { name: 'Kuzhithurai', type: 'Villa', status: 'Under Construction', price: '₹1.1 Crores' }
-    ],
-    'Thoothukudi': [
-      { name: 'Tiruchendur', type: 'Apartments', status: 'Ready to Occupy', price: '₹60 Lakhs' },
-      { name: 'Sathankulam', type: 'Duplex Houses', status: 'Completed', price: '₹75 Lakhs' },
-      { name: 'Ottapidaram', type: 'Villa', status: 'Under Construction', price: '₹95 Lakhs' }
-    ]
-  };
-
-  const imageMap = {
-    'Chennai': {
-      'T. Nagar': 'T.Nagar.jpg',
-      'Pallavaram': 'Pallavaram.jpg',
-      'Anna Nagar': 'Anna Nagar.jpg'
-    },
-    'Coimbatore': {
-      'RS Puram': 'RS Puram.jpg',
-      'Peelamedu': 'Peelamedu.jpg',
-      'Saravanampatti': 'Saravanampatti.jpg'
-    },
-    'Trichy': {
-      'Samayapuram': 'Samayapuram.jpg',
-      'Melur': 'Melur.jpg',
-      'Srirangam': 'Srirangam.jpg'
-    },
-    'Tirunelveli': {
-      'Palayamkottai': 'Palayamkottai.jpg',
-      'Vannarapettai': 'Vannarapettai.jpg',
-      'Melapalayam': 'Melapalayam.jpg'
-    },
-    'Madurai': {
-      'KK Nagar': 'KK Nagar.jpg',
-      'Anna Nagar': 'anna nagar(m).jpg',
-      'Othakadai': 'Othakadai.jpg'
-    },
-    'Salem': {
-      'Gugai': 'Gugai.jpg',
-      'Fairlands': 'Fairlands.jpg',
-      'Suramangalam': 'Suramangalam.jpg'
-    },
-    'Virudhunagar': {
-      'Sivakasi': 'Sivakasi.jpg',
-      'Aruppukkottai': 'Aruppukkottai.jpg',
-      'Rajapalayam': 'Rajapalayam.jpg'
-    },
-    'Thanjavur': {
-      'Kumbakonam': 'Kumbakonam.jpg',
-      'Papanasam': 'Papanasam.jpg',
-      'Thiruvaiyaru': 'Thiruvaiyaru.jpg'
-    },
-    'Kanyakumari': {
-      'Nagercoil': 'Nagercoil.jpg',
-      'Marthandam': 'Marthandam.jpg',
-      'Kuzhithurai': 'Kuzhithurai.jpg'
-    },
-    'Thoothukudi': {
-      'Tiruchendur': 'Tiruchendur.jpg',
-      'Sathankulam': 'Sathankulam.jpg',
-      'Ottapidaram': 'Ottapidaram.jpg'
-    }
-  };
-
-  function openModal(city) {
-    const modal = document.getElementById('locationModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalLocations = document.getElementById('modalLocations');
-
-    const locations = locationDetails[city] || [];
-
-    modalTitle.textContent = `${city} Projects - Location Details`;
-    modalLocations.innerHTML = '';
-
-    const cardsContainer = document.createElement('div');
-    cardsContainer.className = 'modal-cards';
-
-    locations.forEach(location => {
-      const card = document.createElement('div');
-      card.className = 'modal-card';
-      card.innerHTML = `
-        <img src="${imageMap[city][location.name] || city.toLowerCase() + '.jpg'}" alt="${location.name}">
-        <div class="modal-card-body">
-          <h4>${location.name} – ${location.type}</h4>
-          <p><strong>Status:</strong> ${location.status}</p>
-          <p><strong>Price:</strong> <span style="color:#e63946; font-weight:bold;">${location.price}</span></p>
+    <div class="projects">
+      <div class="card city-card" data-city="Chennai" data-type="Mixed" data-status="Multiple" data-price="60">
+        <span class="highlight-tag">⭐ Premium</span>
+        <div class="card-image-wrapper">
+          <img src="chennai.jpg" alt="Chennai Real Estate" />
         </div>
-      `;
-      cardsContainer.appendChild(card);
-    });
+        <div class="card-body">
+          <div class="card-location">Chennai</div>
+          <h3>Thendral Celestia</h3>
+          <p>Premium residential apartments with world-class amenities in the heart of Chennai</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-4 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹60L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Ready</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Celestia')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-    modalLocations.appendChild(cardsContainer);
+      <div class="card city-card" data-city="Coimbatore" data-type="Mixed" data-status="Multiple" data-price="70">
+        <span class="highlight-tag">🔥 Best Seller</span>
+        <div class="card-image-wrapper">
+          <img src="coimbatore.jpg" alt="Coimbatore Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Coimbatore</div>
+          <h3>Thendral Enclave</h3>
+          <p>Luxurious villas and apartments in Coimbatore's most sought-after location</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">3-5 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹70L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Available</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Enclave')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+      <div class="card city-card" data-city="Trichy" data-type="Mixed" data-status="Multiple" data-price="55">
+        <span class="highlight-tag">💎 Exclusive</span>
+        <div class="card-image-wrapper">
+          <img src="trichy.jpg" alt="Trichy Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Trichy</div>
+          <h3>Thendral Elite</h3>
+          <p>Exclusive residential community with modern architecture and lifestyle amenities</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-3 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹55L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Launching</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Elite')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  function closeModal() {
-    const modal = document.getElementById('locationModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto'; 
-  }
+      <div class="card city-card" data-city="Tirunelveli" data-type="Mixed" data-status="Multiple" data-price="50">
+        <span class="highlight-tag">🌟 Hot Deal</span>
+        <div class="card-image-wrapper">
+          <img src="tirunelveli.jpg" alt="Tirunelveli Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Tirunelveli</div>
+          <h3>Thendral Woods</h3>
+          <p>Premium plotted development with spacious villas in a serene environment</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-4 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹50L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Booking Open</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Woods')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  document.getElementById('locationModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeModal();
-    }
-  });
+      <div class="card city-card" data-city="Madurai" data-type="Mixed" data-status="Multiple" data-price="60">
+        <span class="highlight-tag">✨ New Launch</span>
+        <div class="card-image-wrapper">
+          <img src="madurai.jpg" alt="Madurai Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Madurai</div>
+          <h3>Thendral Homes</h3>
+          <p>Latest residential complex featuring smart homes and eco-friendly design</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-3 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹60L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Pre-Launch</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Homes')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  });
+      <div class="card city-card" data-city="Salem" data-type="Mixed" data-status="Multiple" data-price="45">
+        <span class="highlight-tag">🌿 Eco-Friendly</span>
+        <div class="card-image-wrapper">
+          <img src="salem.jpeg" alt="Salem Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Salem</div>
+          <h3>Thendral Gardens</h3>
+          <p>Eco-friendly residential apartments with green spaces and sustainable living in Salem</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-3 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹45L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Ready</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Gardens')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  
-  const cityCards = document.querySelectorAll('.city-card');
+      <div class="card city-card" data-city="Virudhunagar" data-type="Mixed" data-status="Multiple" data-price="55">
+        <span class="highlight-tag">🏡 Family Homes</span>
+        <div class="card-image-wrapper">
+          <img src="Virudhunagar.jpg" alt="Virudhunagar Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Virudhunagar</div>
+          <h3>Thendral Villas</h3>
+          <p>Spacious family villas with modern amenities in the peaceful surroundings of Virudhunagar</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">3-4 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹55L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Available</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Villas')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  cityCards.forEach(card => {
-    const img = card.querySelector('img');
-    if (img) {
-      img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const city = card.getAttribute('data-city');
-        openModal(city);
-      });
-    }
-  });
+      <div class="card city-card" data-city="Thanjavur" data-type="Mixed" data-status="Multiple" data-price="50">
+        <span class="highlight-tag">🏛️ Cultural Hub</span>
+        <div class="card-image-wrapper">
+          <img src="Thanjavur.jpeg" alt="Thanjavur Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Thanjavur</div>
+          <h3>Thendral Heritage</h3>
+          <p>Heritage-inspired homes blending tradition and modernity in Thanjavur's cultural heart</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-4 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹50L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Launching</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Heritage')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  // Special handling for Thendral Celestia image click
-  const thendralCelestiaCard = document.querySelector('.card[data-city="Chennai"]');
-  if (thendralCelestiaCard) {
-    const img = thendralCelestiaCard.querySelector('img');
-    if (img) {
-      img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        openModal('Chennai');
-      });
-    }
-  }
+      <div class="card city-card" data-city="Kanyakumari" data-type="Mixed" data-status="Multiple" data-price="65">
+        <span class="highlight-tag">🏖️ Seaside Living</span>
+        <div class="card-image-wrapper">
+          <img src="Kanyakumari.jpg" alt="Kanyakumari Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Kanyakumari</div>
+          <h3>Thendral Beachfront</h3>
+          <p>Beachfront properties offering serene seaside living with stunning ocean views in Kanyakumari</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">2-3 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹65L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Booking Open</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Beachfront')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-  // Search functionality
-  function searchProjects() {
-    const searchValue = document.getElementById('searchInput').value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.city-card');
-    let foundCount = 0;
+      <div class="card city-card" data-city="Thoothukudi" data-type="Mixed" data-status="Multiple" data-price="60">
+        <span class="highlight-tag">🚢 Waterfront</span>
+        <div class="card-image-wrapper">
+          <img src="Thoothukudi.jpg" alt="Thoothukudi Real Estate" />
+        </div>
+        <div class="card-body">
+          <div class="card-location">Thoothukudi</div>
+          <h3>Thendral Marina</h3>
+          <p>Waterfront residences with marina views and premium amenities in Thoothukudi</p>
+          <div class="card-meta">
+            <div class="card-stat">
+              <div class="card-stat-value">3-5 BHK</div>
+              <div class="card-stat-label">Options</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">₹60L+</div>
+              <div class="card-stat-label">Starts at</div>
+            </div>
+            <div class="card-stat">
+              <div class="card-stat-value">Pre-Launch</div>
+              <div class="card-stat-label">Status</div>
+            </div>
+          </div>
+          <button class="enquiry-btn" onclick="openEnquiryModal('Thendral Marina')">ENQUIRE NOW</button>
+        </div>
+      </div>
 
-    if (searchValue === '') {
-      cards.forEach(card => card.style.display = 'block');
-      return;
-    }
+    </div>
+  </section>
 
-    cards.forEach(card => {
-      const city = card.getAttribute('data-city').toLowerCase();
-      const title = card.querySelector('h3').textContent.toLowerCase();
-      const description = card.querySelector('p').textContent.toLowerCase();
-
-      if (city.includes(searchValue) || title.includes(searchValue) || description.includes(searchValue)) {
-        card.style.display = 'block';
-        foundCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    if (foundCount === 0) {
-      alert('No projects found matching your search.');
-    }
-
-    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Allow Enter key to search
-  document.getElementById('searchInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      searchProjects();
-    }
-  });
-
-  // View all projects
-  function viewAllProjects() {
-    const cards = document.querySelectorAll('.city-card');
-    cards.forEach(card => card.style.display = 'block');
-    document.getElementById('searchInput').value = '';
-    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Enquiry modal functions
-  function openEnquiryModal(projectName) {
-    document.getElementById('enquiryProjectName').textContent = projectName;
-    document.getElementById('enquiryModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeEnquiryModal() {
-    document.getElementById('enquiryModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  // Close modal on outside click
-  document.getElementById('enquiryModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeEnquiryModal();
-    }
-  });
-
-  // Close modal on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && document.getElementById('enquiryModal').classList.contains('active')) {
-      closeEnquiryModal();
-    }
-  });
-
-</script>
-
-<script>
-// Session Management
-window.onload = function() {
-  const loginLink = document.querySelector('nav a[href="login.html"]');
-  const userType = localStorage.getItem('userType');
-
-  if (userType === 'customer') {
-    const userName = localStorage.getItem('userName') || 'User';
-    loginLink.textContent = `LOGOUT (${userName})`;
-    loginLink.href = '#';
-    loginLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      localStorage.removeItem('userType');
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('userName');
-      window.location.href = 'index.html';
-    });
-  } else if (userType === 'admin') {
-    // Admin stays on properties page, add admin dashboard link
-    const nav = document.querySelector('nav');
-    const adminLink = document.createElement('a');
-    adminLink.href = 'admin.html';
-    adminLink.textContent = 'ADMIN DASHBOARD';
-    adminLink.style.color = '#ffd166';
-    adminLink.style.fontWeight = 'bold';
-    nav.appendChild(adminLink);
-  } else {
-    // Allow non-logged-in users to stay on the home page, redirect others to login
-    if (!window.location.pathname.includes('index.html')) {
-      window.location.href = 'login.html';
-    }
-  }
-};
-</script>
-
-<footer>
-  <div>
-    <h3>GET IN TOUCH</h3>
-    <p>📞 +91 98765 43210</p>
-    <p>✉️ info@thendralproperties.com</p>
+  <div id="locationModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <ul class="modal-locations" id="modalLocations"></ul>
+    </div>
   </div>
-  <div>
-    <h3>QUICK LINKS</h3>
-    <a href="index.html">Home</a>
-    <a href="properties.html">Properties</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-  </div>
-<div class="copyright">
-    © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
-  </div>
-</footer>
 
-<div class="floating">
-  <a href="tel:+919876543210" class="phone">📞</a>
-</div>
+  <div id="enquiryModal" class="enquiry-modal-overlay">
+    <div class="enquiry-modal-content">
+      <button class="enquiry-modal-close" onclick="closeEnquiryModal()">&times;</button>
+      <h2 class="enquiry-modal-title">Enquire About <span id="enquiryProjectName"></span></h2>
+      <form class="enquiry-form">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="tel" name="mobile" placeholder="Mobile Number" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="city" required>
+          <option value="">Select City</option>
+          <option>Chennai</option>
+          <option>Coimbatore</option>
+          <option>Trichy</option>
+          <option>Tirunelveli</option>
+          <option>Madurai</option>
+          <option>Salem</option>
+          <option>Virudhunagar</option>
+          <option>Thanjavur</option>
+          <option>Kanyakumari</option>
+          <option>Thoothukudi</option>
+        </select>
+        <textarea name="message" placeholder="Message" rows="4"></textarea>
+        <button type="submit">SUBMIT ENQUIRY</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="properties.js"></script>
+
+  <footer>
+    <div>
+      <h3>GET IN TOUCH</h3>
+      <p>📞 +91 98765 43210</p>
+      <p>✉️ info@thendralproperties.com</p>
+    </div>
+    <div>
+      <h3>QUICK LINKS</h3>
+      <a href="index.html">Home</a>
+      <a href="properties.html">Properties</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="copyright">
+      © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
+    </div>
+  </footer>
+
+  <div class="floating">
+    <a href="tel:+919876543210" class="phone">📞</a>
+  </div>
 
 </body>
+
 </html>
