@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | Thendral Properties</title>
+    <link rel="stylesheet" href="admin-dashboard.css" />
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>THENDRAL PROPERTIES</h1>
+                <p class="tagline">Admin Portal</p>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-name" id="userName">Administrator</div>
+                <div class="user-role" id="userRole">Admin</div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active" data-section="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-section="properties" id="navProperties">
+                    <span class="icon">🏢</span>
+                    <span>Property Management</span>
+                </div>
+                <div class="nav-item superadmin-only" data-section="website" id="navWebsite" style="display: none;">
+                    <span class="icon">🌐</span>
+                    <span>Website Editor</span>
+                </div>
+                <div class="nav-item superadmin-only" data-section="users" id="navUsers" style="display: none;">
+                    <span class="icon">👥</span>
+                    <span>User Management</span>
+                </div>
+                <div class="nav-item superadmin-only" data-section="settings" id="navSettings" style="display: none;">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
+            </nav>
+
+            <button class="logout-btn" onclick="logout()">
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div>
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                    <p class="breadcrumb" id="breadcrumb">Home / Dashboard</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="icon">🏙️</div>
+                        <div class="value" id="totalCities">10</div>
+                        <div class="label">Total Cities</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">🏢</div>
+                        <div class="value" id="totalProperties">30</div>
+                        <div class="label">Total Properties</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">✅</div>
+                        <div class="value" id="readyProperties">10</div>
+                        <div class="label">Ready to Occupy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">🚧</div>
+                        <div class="value" id="underConstruction">10</div>
+                        <div class="label">Under Construction</div>
+                    </div>
+                </div>
+
+                <div class="property-table-container">
+                    <h2 style="padding: 20px 20px 0; color: #0f4c5c;">Recent Activity</h2>
+                    <div style="padding: 20px; color: #666;">
+                        <p>Welcome to the Thendral Properties Admin Portal!</p>
+                        <p style="margin-top: 10px;">Use the navigation menu to manage properties and website content.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Property Management Section -->
+            <section id="properties" class="content-section">
+                <div id="alertContainer"></div>
+
+                <div class="property-actions">
+                    <button class="btn btn-primary" onclick="openAddPropertyModal()">
+                        <span>➕</span>
+                        <span>Add New Property</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshProperties()">
+                        <span>🔄</span>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+
+                <div class="property-table-container">
+                    <table class="property-table">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Location</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="propertyTableBody">
+                            <tr>
+                                <td colspan="6" class="loading">
+                                    <div class="spinner"></div>
+                                    Loading properties...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Website Editor Section (Super Admin Only) -->
+            <section id="website" class="content-section">
+                <div class="alert alert-info">
+                    <strong>ℹ️ Website Editor</strong><br>
+                    This section allows you to edit website content, update pages, and manage site-wide settings.
+                </div>
+
+                <div class="property-table-container">
+                    <h2 style="padding: 20px; color: #0f4c5c;">Website Content Management</h2>
+                    <div style="padding: 0 20px 20px;">
+                        <div class="form-group">
+                            <label>Site Title</label>
+                            <input type="text" value="THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU" />
+                        </div>
+                        <div class="form-group">
+                            <label>Hero Section Heading</label>
+                            <input type="text" value="Where Trust Meets Timeless Living" />
+                        </div>
+                        <div class="form-group">
+                            <label>Hero Section Description</label>
+                            <textarea>Premium apartments, villas & plots in Tamil Nadu's most desirable locations.</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary"
+                                onclick="showAlert('Website content updated successfully!', 'success')">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Management Section (Super Admin Only) -->
+            <section id="users" class="content-section">
+                <div class="alert alert-info">
+                    <strong>ℹ️ User Management</strong><br>
+                    Manage admin users, roles, and permissions.
+                </div>
+
+                <div class="property-actions">
+                    <button class="btn btn-primary" onclick="showAlert('Add user functionality coming soon!', 'info')">
+                        <span>➕</span>
+                        <span>Add New User</span>
+                    </button>
+                </div>
+
+                <div class="property-table-container">
+                    <table class="property-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>superadmin</td>
+                                <td>Super Administrator</td>
+                                <td><span style="color: #e63946; font-weight: bold;">Super Admin</span></td>
+                                <td><span style="color: #28a745;">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-edit">✏️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>admin</td>
+                                <td>Administrator</td>
+                                <td><span style="color: #1b9c85; font-weight: bold;">Admin</span></td>
+                                <td><span style="color: #28a745;">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-edit">✏️</button>
+                                        <button class="btn-icon btn-delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section (Super Admin Only) -->
+            <section id="settings" class="content-section">
+                <div class="alert alert-info">
+                    <strong>ℹ️ System Settings</strong><br>
+                    Configure system-wide settings and preferences.
+                </div>
+
+                <div class="property-table-container">
+                    <h2 style="padding: 20px; color: #0f4c5c;">General Settings</h2>
+                    <div style="padding: 0 20px 20px;">
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" value="info@thendralproperties.com" />
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input type="tel" value="+91 98765 43210" />
+                        </div>
+                        <div class="form-group">
+                            <label>Session Timeout (minutes)</label>
+                            <input type="number" value="60" />
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary"
+                                onclick="showAlert('Settings saved successfully!', 'success')">
+                                Save Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Property Modal -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add New Property</h2>
+                <button class="modal-close" onclick="closePropertyModal()">×</button>
+            </div>
+
+            <form id="propertyForm">
+                <input type="hidden" id="propertyId" />
+                <input type="hidden" id="editCity" />
+                <input type="hidden" id="editLocationIndex" />
+
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <select id="city" required>
+                        <option value="">Select City</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Coimbatore">Coimbatore</option>
+                        <option value="Trichy">Trichy</option>
+                        <option value="Tirunelveli">Tirunelveli</option>
+                        <option value="Madurai">Madurai</option>
+                        <option value="Salem">Salem</option>
+                        <option value="Virudhunagar">Virudhunagar</option>
+                        <option value="Thanjavur">Thanjavur</option>
+                        <option value="Kanyakumari">Kanyakumari</option>
+                        <option value="Thoothukudi">Thoothukudi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="locationName">Location Name *</label>
+                    <input type="text" id="locationName" required placeholder="e.g., T. Nagar" />
+                </div>
+
+                <div class="form-group">
+                    <label for="propertyType">Property Type *</label>
+                    <select id="propertyType" required>
+                        <option value="">Select Type</option>
+                        <option value="Apartments">Apartments</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Duplex Houses">Duplex Houses</option>
+                        <option value="Villa">Villa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status *</label>
+                    <select id="status" required>
+                        <option value="">Select Status</option>
+                        <option value="Ready to Occupy">Ready to Occupy</option>
+                        <option value="Under Construction">Under Construction</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price *</label>
+                    <input type="text" id="price" required placeholder="e.g., ₹90 Lakhs" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closePropertyModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span id="submitBtnText">Add Property</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+
+</html>
