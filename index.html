@@ -1,151 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Thendral Properties - Premier real estate developer in Tamil Nadu offering luxury apartments, villas & plots in Chennai, Coimbatore, Madurai, Trichy and more. 15+ years of excellence." />
   <title>Home | THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU</title>
-  <script>
-    // Redirect to login if not logged in
-    if (!localStorage.getItem('userType')) {
-      window.location.href = 'login.html';
-    }
-  </script>
+
   <style>
-    html { scroll-behavior: smooth; }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 50%, #f7f7f7 100%); color:#333; min-height:100vh; }
-    header { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3); position:sticky; top:0; z-index:999; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    header.scrolled { padding:10px 40px; box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5); }
-    .logo-container { display:flex; flex-direction:column; gap:2px; }
-    header h1 { margin:0; font-size:24px; }
-    .header-tagline { font-size:11px; color:#ffd166; font-weight:500; letter-spacing:1px; text-transform:uppercase; }
-    nav { display:flex; align-items:center; gap:20px; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; transition:all 0.3s ease; }
-    nav a:hover { color:#ffd166; text-shadow: 0 0 10px rgba(255, 209, 102, 0.5); }
-    .call-btn { background:#f77f00; padding:10px 15px; border-radius:5px; color:#fff; text-decoration:none; transition:all 0.3s ease; }
-    .search-container { display:flex; align-items:center; background:#ffffff; border-radius:25px; padding:8px 15px; transition:all 0.3s ease; }
-    .search-container input { border:none; outline:none; padding:8px 10px; width:150px; font-size:14px; background:transparent; }
-    .search-container input::placeholder { color:#999; }
-    .search-container button { background:#f77f00; border:none; color:#fff; padding:8px 15px; border-radius:20px; cursor:pointer; font-weight:bold; transition:all 0.3s ease; }
-    .search-container button:hover { background:#e67e0a; transform:scale(1.05); }
-.hero {
-  background:url('hero.jpg') center center / cover no-repeat;
-  height: 75vh;
-  position: relative;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f4c5c 0%, #1b9c85 50%, #f7f7f7 100%);
+      color: #333;
+      min-height: 100vh;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
+    header {
+      background: linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%);
+      color: #fff;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    header.scrolled {
+      padding: 10px 40px;
+      box-shadow: 0 8px 25px rgba(15, 76, 92, 0.5);
+    }
 
-  text-align: center;
-}
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-    .hero h2 { 
-      font-size:36px; 
-      margin-bottom:10px;
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header-tagline {
+      font-size: 11px;
+      color: #ffd166;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd166;
+      text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+    }
+
+    .call-btn {
+      background: #f77f00;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 25px;
+      padding: 8px 15px;
+      transition: all 0.3s ease;
+    }
+
+    .search-container input {
+      border: none;
+      outline: none;
+      padding: 8px 10px;
+      width: 150px;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .search-container input::placeholder {
+      color: #999;
+    }
+
+    .search-container button {
+      background: #f77f00;
+      border: none;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .search-container button:hover {
+      background: #e67e0a;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      background: url('hero.jpg') center center / cover no-repeat;
+      height: 75vh;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
       color: #f8f9fa;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
     }
-    .hero p { 
-      font-size:18px;
+
+    .hero p {
+      font-size: 18px;
       color: #dee2e6;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
 
-    .cta { margin-top:20px; }
-.cta a {
-  background: linear-gradient(135deg, #0f4c5c, #1b9c85);
-  color: #ffffff;
-  padding: 12px 20px;
-  margin-right: 10px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
+    .cta {
+      margin-top: 20px;
+    }
 
-.cta a:hover {
-  background: linear-gradient(135deg, #0c3f4b, #14806a);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
+    .cta a {
+      background: linear-gradient(135deg, #0f4c5c, #1b9c85);
+      color: #ffffff;
+      padding: 12px 20px;
+      margin-right: 10px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
 
-    section { padding:50px 40px; }
-    h2.section-title { text-align:center; margin-bottom:30px; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-size:32px; font-weight:bold; letter-spacing:1px; position:relative; animation:fadeUp 0.8s ease forwards; opacity:0; padding-bottom:15px; }
-    h2.section-title::after { content:''; position:absolute; bottom:0; left:50%; width:0; height:3px; background:linear-gradient(90deg, #0f4c5c, #1b9c85); transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform:translateX(-50%); }
-    h2.section-title:hover::after { width:80px; }
+    .cta a:hover {
+      background: linear-gradient(135deg, #0c3f4b, #14806a);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
 
-    .filters { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:30px; }
-    .filters select { padding:10px; border-radius:5px; border:1px solid #ccc; }
+    section {
+      padding: 50px 40px;
+    }
 
-    .projects { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
-    .card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.12); transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); position:relative; border:2px solid transparent; border-top:4px solid #1b9c85; animation:fadeUp 0.6s ease forwards; opacity:0; }
-    .card:nth-child(1) { animation-delay:0.1s; border-top-color:#1b9c85; }
-    .card:nth-child(2) { animation-delay:0.2s; border-top-color:#f77f00; }
-    .card:nth-child(3) { animation-delay:0.3s; border-top-color:#e63946; }
-    .card:nth-child(n+4) { animation-delay:0.4s; border-top-color:#0f4c5c; }
-    .card::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition:left 0.6s ease; z-index:1; }
-    .card:hover::before { left:100%; }
-    .card:hover { transform:translateY(-14px); box-shadow:0 24px 48px rgba(15, 76, 92, 0.3), 0 0 40px rgba(27, 156, 133, 0.25); border-color:rgba(27, 156, 133, 0.1); }
-    .card-image-wrapper { position:relative; overflow:hidden; }
-    .card img { width:100%; aspect-ratio: 16/9; object-fit:cover; display:block; transition:opacity 0.4s ease, transform 0.4s ease; cursor:pointer; }
-    .card img:hover { opacity:0.85; transform:scale(1.1); }
-    .card-body { padding:25px; }
-    .card-location { font-size:12px; color:#1b9c85; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:8px; }
-    .card-body h3 { margin:0 0 8px 0; font-size:22px; color:#0f4c5c; font-weight:700; line-height:1.3; }
-    .card-body p { color:#666; font-size:14px; margin:12px 0 15px 0; line-height:1.6; }
-    .card-meta { display:flex; justify-content:space-between; align-items:center; padding-top:15px; border-top:1px solid #f0f0f0; }
-    .card-stat { text-align:center; }
-    .card-stat-value { font-size:16px; font-weight:700; color:#0f4c5c; }
-    .card-stat-label { font-size:11px; color:#999; text-transform:uppercase; margin-top:3px; }
-    .badge { display:inline-block; padding:8px 14px; background:#2a9d8f; color:#fff; border-radius:25px; font-size:12px; font-weight:600; margin-bottom:0; }
-    .highlight-tag { position:absolute; top:15px; right:15px; background:linear-gradient(135deg, #f77f00, #fcbf49); color:#fff; padding:8px 16px; border-radius:25px; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; box-shadow:0 6px 16px rgba(247, 127, 0, 0.35); animation:pulse-tag 2s infinite; z-index:10; }
-    @keyframes pulse-tag { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.06); } }
-    .price { color:#e63946; font-weight:bold; margin-top:10px; }
+    h2.section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: relative;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+      padding-bottom: 15px;
+    }
 
-    .about { background:#e9ecef; }
-    .about p { max-width:900px; margin:0 auto; line-height:1.7; text-align:center; }
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #0f4c5c, #1b9c85);
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
 
-    .enquiry form { max-width:600px; margin:0 auto; background:#fff; padding:40px 30px; border-radius:12px; box-shadow:0 4px 24px rgba(15, 76, 92, 0.15); border:1px solid rgba(27, 156, 133, 0.1); animation:fadeUp 0.8s ease; }
-    .enquiry input, .enquiry select { width:100%; padding:14px; margin-bottom:18px; border:2px solid #e0e0e0; border-radius:8px; transition:all 0.3s ease; font-size:15px; box-sizing:border-box; }
-    .enquiry input:focus, .enquiry select:focus { outline:none; border-color:#1b9c85; box-shadow:0 0 0 3px rgba(27, 156, 133, 0.1), 0 0 8px rgba(27, 156, 133, 0.3); background:linear-gradient(to right, #ffffff, rgba(27, 156, 133, 0.02)); }
-    .enquiry button { width:100%; background:linear-gradient(135deg, #0f4c5c, #1b9c85); color:#fff; padding:14px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:1px; }
-    .enquiry button:hover { transform:translateY(-2px); box-shadow:0 6px 15px rgba(27, 156, 133, 0.4); }
+    h2.section-title:hover::after {
+      width: 80px;
+    }
 
-    .trust-section { background:linear-gradient(135deg, #f7f7f7, #ffffff); padding:60px 40px; }
-    .trust-badges { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:30px; max-width:1200px; margin:0 auto; }
-    .trust-badge { text-align:center; padding:30px; background:#fff; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.08); transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border:2px solid transparent; }
-    .trust-badge:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 12px 30px rgba(27, 156, 133, 0.2); border-color:#1b9c85; }
-    .trust-badge-icon { font-size:50px; margin-bottom:15px; display:block; animation:float 3s ease-in-out infinite; }
-    .trust-badge:nth-child(1) .trust-badge-icon { animation-delay:0s; }
-    .trust-badge:nth-child(2) .trust-badge-icon { animation-delay:0.2s; }
-    .trust-badge:nth-child(3) .trust-badge-icon { animation-delay:0.4s; }
-    .trust-badge:nth-child(4) .trust-badge-icon { animation-delay:0.6s; }
-    @keyframes float { 0%, 100% { transform:translateY(0px); } 50% { transform:translateY(-10px); } }
-    .trust-badge h3 { color:#0f4c5c; margin:15px 0 10px 0; font-size:18px; }
-    .trust-badge p { color:#666; font-size:14px; margin:0; line-height:1.6; }
+    .filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .filters select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      border: 2px solid transparent;
+      border-top: 4px solid #1b9c85;
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0.1s;
+      border-top-color: #1b9c85;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
+      border-top-color: #f77f00;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.3s;
+      border-top-color: #e63946;
+    }
+
+    .card:nth-child(n+4) {
+      animation-delay: 0.4s;
+      border-top-color: #0f4c5c;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+      z-index: 1;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 24px 48px rgba(15, 76, 92, 0.3), 0 0 40px rgba(27, 156, 133, 0.25);
+      border-color: rgba(27, 156, 133, 0.1);
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .card img:hover {
+      opacity: 0.85;
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .card-location {
+      font-size: 12px;
+      color: #1b9c85;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      color: #0f4c5c;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .card-body p {
+      color: #666;
+      font-size: 14px;
+      margin: 12px 0 15px 0;
+      line-height: 1.6;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 15px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .card-stat {
+      text-align: center;
+    }
+
+    .card-stat-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f4c5c;
+    }
+
+    .card-stat-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #2a9d8f;
+      color: #fff;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    .highlight-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #f77f00, #fcbf49);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 16px rgba(247, 127, 0, 0.35);
+      animation: pulse-tag 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulse-tag {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.06);
+      }
+    }
+
+    .price {
+      color: #e63946;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .about {
+      background: #e9ecef;
+    }
+
+    .about p {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .enquiry form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(15, 76, 92, 0.15);
+      border: 1px solid rgba(27, 156, 133, 0.1);
+      animation: fadeUp 0.8s ease;
+    }
+
+    .enquiry input,
+    .enquiry select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .enquiry input:focus,
+    .enquiry select:focus {
+      outline: none;
+      border-color: #1b9c85;
+      box-shadow: 0 0 0 3px rgba(27, 156, 133, 0.1), 0 0 8px rgba(27, 156, 133, 0.3);
+      background: linear-gradient(to right, #ffffff, rgba(27, 156, 133, 0.02));
+    }
+
+    .enquiry button {
+      width: 100%;
+      background: linear-gradient(135deg, #0f4c5c, #1b9c85);
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .enquiry button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(27, 156, 133, 0.4);
+    }
+
+    .trust-section {
+      background: linear-gradient(135deg, #f7f7f7, #ffffff);
+      padding: 60px 40px;
+    }
+
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .trust-badge {
+      text-align: center;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 2px solid transparent;
+    }
+
+    .trust-badge:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(27, 156, 133, 0.2);
+      border-color: #1b9c85;
+    }
+
+    .trust-badge-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .trust-badge:nth-child(1) .trust-badge-icon {
+      animation-delay: 0s;
+    }
+
+    .trust-badge:nth-child(2) .trust-badge-icon {
+      animation-delay: 0.2s;
+    }
+
+    .trust-badge:nth-child(3) .trust-badge-icon {
+      animation-delay: 0.4s;
+    }
+
+    .trust-badge:nth-child(4) .trust-badge-icon {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .trust-badge h3 {
+      color: #0f4c5c;
+      margin: 15px 0 10px 0;
+      font-size: 18px;
+    }
+
+    .trust-badge p {
+      color: #666;
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.6;
+    }
 
     .city-link {
       color: #0f4c5c;
       text-decoration: none;
     }
+
     .city-link:hover {
       color: #1b9c85;
     }
@@ -153,335 +569,403 @@
 
 
     .animated-number {
-      font-size: 42px; 
-      font-weight: 700; 
-      color: #1b9c85; 
-      display: block; 
+      font-size: 42px;
+      font-weight: 700;
+      color: #1b9c85;
+      display: block;
       margin-bottom: 8px;
     }
-    .number-suffix { 
-      font-size: 28px; 
+
+    .number-suffix {
+      font-size: 28px;
       color: #0f4c5c;
     }
 
-    footer { background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:30px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; box-shadow: 0 -4px 15px rgba(15, 76, 92, 0.3); }
-    footer a { color:#ffd166; text-decoration:none; display:block; margin-bottom:8px; }
-
-    .floating { position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:10px; }
-    .floating a { background:#25d366; color:#fff; padding:12px; border-radius:50%; text-align:center; font-size:18px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:pulse 2s infinite, shake 0.5s ease-in-out 3.5s infinite; }
-    .floating a.phone { animation:pulse 2s infinite, shake 0.5s ease-in-out 3.5s infinite; }
-    .floating a:hover { transform:scale(1.15); box-shadow:0 6px 20px rgba(0,0,0,0.3); animation:none; }
-    @keyframes pulse { 0%, 100% { transform:scale(1); } 50% { transform:scale(1.05); } }
-    @keyframes shake { 
-      0%, 100% { transform: translateX(0) rotate(0deg); }
-      25% { transform: translateX(-8px) rotate(-5deg); }
-      50% { transform: translateX(8px) rotate(5deg); }
-      75% { transform: translateX(-8px) rotate(-5deg); }
+    footer {
+      background: linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%);
+      color: #fff;
+      padding: 30px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      box-shadow: 0 -4px 15px rgba(15, 76, 92, 0.3);
     }
-    .phone { background:#0f4c5c !important; }
 
-    
-    .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center; }
-    .modal-overlay.active { display:flex; }
-    .modal-content { background:#fff; border-radius:12px; padding:30px; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
-    .modal-close { position:absolute; top:15px; right:15px; background:#e63946; color:#fff; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:18px; font-weight:bold; display:flex; align-items:center; justify-content:center; }
-    .modal-close:hover { background:#c1121f; }
-    .modal-title { color:#0f4c5c; font-size:24px; margin-bottom:20px; text-align:center; }
-    .modal-locations { list-style:none; padding:0; }
-    .modal-locations li { background:#f7f7f7; padding:15px; margin-bottom:15px; border-radius:8px; border-left:4px solid #2a9d8f; }
-    .modal-locations li h4 { margin:0 0 8px 0; color:#0f4c5c; font-size:18px; }
-    .modal-locations li p { margin:5px 0; color:#666; }
-    .card img { cursor:pointer; }
-  /* Fade-in animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    footer a {
+      color: #ffd166;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
 
-.hero h2 {
-  animation: fadeUp 1s ease forwards;
-}
+    .floating {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.hero p {
-  animation: fadeUp 1.2s ease forwards;
-}
+    .floating a {
+      background: #25d366;
+      color: #fff;
+      padding: 12px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite, shake 0.5s ease-in-out 3.5s infinite;
+    }
 
-.cta {
-  animation: fadeUp 1.4s ease forwards;
-}
-/* Scroll Down Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 65px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28px;
-  height: 48px;
-  border: 2px solid #ffffff;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
-  z-index: 3;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
+    .floating a.phone {
+      animation: pulse 2s infinite, shake 0.5s ease-in-out 3.5s infinite;
+    }
 
-.scroll-indicator span {
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  border-radius: 50%;
-  animation: scrollMove 1.6s infinite;
-}
+    .floating a:hover {
+      transform: scale(1.15);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      animation: none;
+    }
 
-@keyframes scrollMove {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(18px); opacity: 0; }
-}
-/* Mobile Sticky Enquire Bar */
-.mobile-enquire-bar {
-  display: none;
-}
+    @keyframes pulse {
 
-@media (max-width: 768px) {
-  .mobile-enquire-bar {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #0f4c5c, #1b9c85);
-    text-align: center;
-    padding: 14px 0;
-    z-index: 9999;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
-  }
+      0%,
+      100% {
+        transform: scale(1);
+      }
 
-  .mobile-enquire-bar a {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-  }
+      50% {
+        transform: scale(1.05);
+      }
+    }
 
-  body {
-    padding-bottom: 70px;
-  }
-}
+    @keyframes shake {
 
+      0%,
+      100% {
+        transform: translateX(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateX(-8px) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateX(8px) rotate(5deg);
+      }
+
+      75% {
+        transform: translateX(-8px) rotate(-5deg);
+      }
+    }
+
+    .phone {
+      background: #0f4c5c !important;
+    }
+
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: #c1121f;
+    }
+
+    .modal-title {
+      color: #0f4c5c;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .modal-locations {
+      list-style: none;
+      padding: 0;
+    }
+
+    .modal-locations li {
+      background: #f7f7f7;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #2a9d8f;
+    }
+
+    .modal-locations li h4 {
+      margin: 0 0 8px 0;
+      color: #0f4c5c;
+      font-size: 18px;
+    }
+
+    .modal-locations li p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .card img {
+      cursor: pointer;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h2 {
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero p {
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .cta {
+      animation: fadeUp 1.4s ease forwards;
+    }
+
+    /* Mobile Sticky Enquire Bar */
+    .mobile-enquire-bar {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-enquire-bar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #0f4c5c, #1b9c85);
+        text-align: center;
+        padding: 14px 0;
+        z-index: 9999;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .mobile-enquire-bar a {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+    }
   </style>
-  
+
 </head>
+
 <body>
 
-<header>
-  <div class="logo-container">
-    <h1>
-      <a href="index.html" style="color:#fff; text-decoration:none;">
-        THENDRAL PROPERTIES
-      </a>
-    </h1>
-    <span class="header-tagline">Trust Meets Living</span>
-  </div>
-  <nav>
-    <a href="login.html" id="login-link">LOGIN</a>
-    <a href="index.html">HOME</a>
-    <a href="properties.html">PROPERTIES</a>
-    <a href="about.html">ABOUT US</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
-</header>
-
-
-<section id="home" class="hero">
-  <div class="hero-content">
-    <h2>Where Trust Meets Timeless Living</h2>
-    <p>Premium apartments, villas & plots in Tamil Nadu's most desirable locations.</p>
-    <div class="cta">
-      <a href="properties.html">VIEW PROJECTS</a>
+  <header>
+    <div class="logo-container">
+      <h1>
+        <a href="index.html" style="color:#fff; text-decoration:none;">
+          THENDRAL PROPERTIES
+        </a>
+      </h1>
+      <span class="header-tagline">Trust Meets Living</span>
     </div>
-  </div>
-  <a href="#why-choose-us" class="scroll-indicator">
-    <span></span>
-  </a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="properties.html">PROPERTIES</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
 
 
-</section>
-
-<section id="customer-welcome" class="customer-welcome" style="display:none; background:linear-gradient(135deg, #0f4c5c 0%, #1b9c85 100%); color:#fff; padding:60px 40px; text-align:center;">
-  <div class="welcome-card" style="background:rgba(255,255,255,0.1); padding:40px; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.2); max-width:800px; margin:0 auto; backdrop-filter:blur(10px);">
-    <h2 style="color:#fff; margin-bottom:20px; font-size:32px;">Welcome to Thendral Properties Portal</h2>
-    <p style="color:#f0f0f0; font-size:18px; margin-bottom:30px;">Explore our premium properties and find your dream home in Tamil Nadu.</p>
-    <div class="welcome-actions" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-      <a href="properties.html" style="background:#ffd166; color:#0f4c5c; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; transition:all 0.3s ease;">Browse Properties</a>
-      <a href="contact.html" style="background:#fff; color:#0f4c5c; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; transition:all 0.3s ease;">Contact Us</a>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Where Trust Meets Timeless Living</h2>
+      <p>Premium apartments, villas & plots in Tamil Nadu's most desirable locations.</p>
+      <div class="cta">
+        <a href="properties.html">VIEW PROJECTS</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section id="why-choose-us" class="trust-section">
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <span class="trust-badge-icon">🏆</span>
+        <div class="animated-number" data-target="500">0</div>
+        <span class="number-suffix">+ Projects</span>
+        <h3>Premium Projects</h3>
+        <p>Delivering excellence across Tamil Nadu with our carefully curated selection of properties.</p>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-icon">👥</span>
+        <div class="animated-number" data-target="10000">0</div>
+        <span class="number-suffix">+ Families</span>
+        <h3>Happy Families</h3>
+        <p>Trusted by thousands of families who have made Thendral their home.</p>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-icon">⭐</span>
+        <div class="animated-number" data-target="15">0</div>
+        <span class="number-suffix">+ Years</span>
+        <h3>Industry Experience</h3>
+        <p>Over a decade of excellence in real estate and customer satisfaction.</p>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-icon">🌟</span>
+        <div class="animated-number" data-target="98">0</div>
+        <span class="number-suffix">%</span>
+        <h3>Client Satisfaction</h3>
+        <p>Maintaining the highest standards of service and customer care.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="why-choose-us" class="trust-section">
-  <h2 class="section-title">Why Choose Us</h2>
-  <div class="trust-badges">
-    <div class="trust-badge">
-      <span class="trust-badge-icon">🏆</span>
-      <div class="animated-number" data-target="500">0</div>
-      <span class="number-suffix">+ Projects</span>
-      <h3>Premium Projects</h3>
-      <p>Delivering excellence across Tamil Nadu with our carefully curated selection of properties.</p>
+  <footer>
+    <div>
+      <h3>GET IN TOUCH</h3>
+      <p>📞 +91 98765 43210</p>
+      <p>✉️ info@thendralproperties.com</p>
     </div>
-    <div class="trust-badge">
-      <span class="trust-badge-icon">👥</span>
-      <div class="animated-number" data-target="10000">0</div>
-      <span class="number-suffix">+ Families</span>
-      <h3>Happy Families</h3>
-      <p>Trusted by thousands of families who have made Thendral their home.</p>
+    <div>
+      <h3>QUICK LINKS</h3>
+      <a href="properties.html">Properties</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <div class="trust-badge">
-      <span class="trust-badge-icon">⭐</span>
-      <div class="animated-number" data-target="15">0</div>
-      <span class="number-suffix">+ Years</span>
-      <h3>Industry Experience</h3>
-      <p>Over a decade of excellence in real estate and customer satisfaction.</p>
+    <div class="copyright">
+      © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
     </div>
-    <div class="trust-badge">
-      <span class="trust-badge-icon">🌟</span>
-      <div class="animated-number" data-target="98">0</div>
-      <span class="number-suffix">%</span>
-      <h3>Client Satisfaction</h3>
-      <p>Maintaining the highest standards of service and customer care.</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div>
-    <h3>GET IN TOUCH</h3>
-    <p>📞 +91 98765 43210</p>
-    <p>✉️ info@thendralproperties.com</p>
+  <div class="floating">
+    <a href="tel:+919876543210" class="phone">📞</a>
   </div>
-  <div>
-    <h3>QUICK LINKS</h3>
-    <a href="properties.html">Properties</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-  </div>
-<div class="copyright">
-    © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
-  </div>
-</footer>
-
-<div class="floating">
-  <a href="tel:+919876543210" class="phone">📞</a>
-</div>
-<!-- Mobile Sticky Enquire Bar -->
+  <!-- Mobile Sticky Enquire Bar -->
   <div class="mobile-enquire-bar">
     <a href="contact.html">📞 ENQUIRE NOW</a>
   </div>
 
-<script>
-// Animated Numbers Script
-function animateNumbers() {
-  const animatedElements = document.querySelectorAll('.animated-number');
-  
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-  };
-  
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-        entry.target.classList.add('animated');
-        animateNumber(entry.target);
+  <script>
+    // Animated Numbers Script
+    function animateNumbers() {
+      const animatedElements = document.querySelectorAll('.animated-number');
+
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            animateNumber(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    function animateNumber(element) {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000; // 2 seconds
+      const start = 0;
+      const increment = target / (duration / 16); // Approximate 60fps
+
+      let current = start;
+
+      const animate = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target.toLocaleString();
+          clearInterval(animate);
+        } else {
+          element.textContent = Math.floor(current).toLocaleString();
+        }
+      }, 16);
+    }
+
+    // Start animation when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', animateNumbers);
+    } else {
+      animateNumbers();
+    }
+
+    // Sticky Header Scroll Effect
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
     });
-  }, observerOptions);
-  
-  animatedElements.forEach(element => {
-    observer.observe(element);
-  });
-}
 
-function animateNumber(element) {
-  const target = parseInt(element.getAttribute('data-target'));
-  const duration = 2000; // 2 seconds
-  const start = 0;
-  const increment = target / (duration / 16); // Approximate 60fps
-  
-  let current = start;
-  
-  const animate = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target.toLocaleString();
-      clearInterval(animate);
-    } else {
-      element.textContent = Math.floor(current).toLocaleString();
-    }
-  }, 16);
-}
 
-// Start animation when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', animateNumbers);
-} else {
-  animateNumbers();
-}
 
-// Sticky Header Scroll Effect
-window.addEventListener("scroll", () => {
-  const header = document.querySelector("header");
-
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-// Session Management
-window.onload = function() {
-  const loginLink = document.getElementById('login-link');
-  const userType = localStorage.getItem('userType');
-  const customerWelcome = document.getElementById('customer-welcome');
-
-  if (userType === 'customer') {
-    const userName = localStorage.getItem('userName') || 'User';
-    loginLink.textContent = `LOGOUT (${userName})`;
-    loginLink.href = '#';
-    loginLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      localStorage.removeItem('userType');
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('userName');
-      window.location.href = 'index.html';
-    });
-  } else if (userType === 'admin') {
-    // Admin stays on home page, add admin dashboard link
-    const nav = document.querySelector('nav');
-    const adminLink = document.createElement('a');
-    adminLink.href = 'admin.html';
-    adminLink.textContent = 'ADMIN DASHBOARD';
-    adminLink.style.color = '#ffd166';
-    adminLink.style.fontWeight = 'bold';
-    nav.appendChild(adminLink);
-  } else {
-    // Redirect non-logged-in users to login page
-    if (window.location.pathname.split('/').pop() !== 'login.html') {
-      window.location.href = 'login.html';
-    }
-  }
-};
-
-</script>
+  </script>
 
 </body>
+
 </html>
