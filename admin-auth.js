@@ -17,7 +17,24 @@ const USERS = {
 
 // Session management
 const SESSION_KEY = 'thendral_admin_session';
-const SESSION_TIMEOUT = 3600000; // 1 hour in milliseconds
+
+// Get session timeout from settings or use default (1 hour)
+function getSessionTimeout() {
+    const stored = localStorage.getItem('thendral_admin_settings');
+    if (stored) {
+        try {
+            const settings = JSON.parse(stored);
+            if (settings.sessionTimeout) {
+                return parseInt(settings.sessionTimeout) * 60000;
+            }
+        } catch (e) {
+            console.error('Error parsing settings for timeout:', e);
+        }
+    }
+    return 3600000; // Default 1 hour
+}
+
+const SESSION_TIMEOUT = getSessionTimeout();
 
 // Login function
 function login(username, password) {
