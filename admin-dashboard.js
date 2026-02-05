@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeDashboard();
     loadProperties();
     loadUsers();
+    loadSettings();
+    loadWebsiteContent();
     setupEventListeners();
 });
 
@@ -82,6 +84,12 @@ function navigateToSection(sectionId) {
         loadProperties();
     } else if (sectionId === 'dashboard') {
         updateDashboardStats();
+    } else if (sectionId === 'users') {
+        loadUsers();
+    } else if (sectionId === 'settings') {
+        loadSettings();
+    } else if (sectionId === 'website') {
+        loadWebsiteContent();
     }
 }
 
@@ -422,7 +430,7 @@ function saveUserData(data) {
 // Load and display users
 function loadUsers() {
     const userData = getUserData();
-    const tbody = document.querySelector('#users tbody');
+    const tbody = document.getElementById('userTableBody');
 
     if (!tbody) return; // Exit if user section doesn't exist
 
@@ -645,4 +653,127 @@ function createUserModal() {
             closeUserModal();
         }
     });
+}
+
+// ===========================
+// SETTINGS FUNCTIONS
+// ===========================
+
+const SETTINGS_STORAGE_KEY = 'thendral_admin_settings';
+
+// Get default settings
+function getDefaultSettings() {
+    return {
+        contactEmail: 'info@thendralproperties.com',
+        contactPhone: '+91 98765 43210',
+        sessionTimeout: '60'
+    };
+}
+
+// Load settings from localStorage or default
+function loadSettings() {
+    const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
+    let settings = getDefaultSettings();
+
+    if (stored) {
+        try {
+            settings = JSON.parse(stored);
+        } catch (e) {
+            console.error('Error parsing stored settings:', e);
+        }
+    }
+
+    // Update UI
+    const emailElem = document.getElementById('contactEmail');
+    const phoneElem = document.getElementById('contactPhone');
+    const timeoutElem = document.getElementById('sessionTimeout');
+
+    if (emailElem) emailElem.value = settings.contactEmail;
+    if (phoneElem) phoneElem.value = settings.contactPhone;
+    if (timeoutElem) timeoutElem.value = settings.sessionTimeout;
+}
+
+// Save settings to localStorage
+function saveSettings() {
+    const contactEmail = document.getElementById('contactEmail').value.trim();
+    const contactPhone = document.getElementById('contactPhone').value.trim();
+    const sessionTimeout = document.getElementById('sessionTimeout').value.trim();
+
+    if (!contactEmail || !contactPhone || !sessionTimeout) {
+        showAlert('Please fill in all fields!', 'error');
+        return;
+    }
+
+    const settings = {
+        contactEmail,
+        contactPhone,
+        sessionTimeout
+    };
+
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+    showAlert('Settings saved successfully!', 'success');
+}
+
+// ===========================
+// WEBSITE EDITOR FUNCTIONS
+// ===========================
+
+const WEBSITE_STORAGE_KEY = 'thendral_website_content';
+
+// Get default website content
+function getDefaultWebsiteContent() {
+    return {
+        siteTitle: 'THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU',
+        siteTagline: 'Trust Meets Living',
+        heroHeading: 'Where Trust Meets Timeless Living',
+        heroDescription: "Premium apartments, villas & plots in Tamil Nadu's most desirable locations."
+    };
+}
+
+// Load website content from localStorage or default
+function loadWebsiteContent() {
+    const stored = localStorage.getItem(WEBSITE_STORAGE_KEY);
+    let content = getDefaultWebsiteContent();
+
+    if (stored) {
+        try {
+            content = JSON.parse(stored);
+        } catch (e) {
+            console.error('Error parsing stored website content:', e);
+        }
+    }
+
+    // Update UI
+    const titleElem = document.getElementById('siteTitle');
+    const taglineElem = document.getElementById('siteTagline');
+    const headingElem = document.getElementById('heroHeading');
+    const descElem = document.getElementById('heroDescription');
+
+    if (titleElem) titleElem.value = content.siteTitle;
+    if (taglineElem) taglineElem.value = content.siteTagline;
+    if (headingElem) headingElem.value = content.heroHeading;
+    if (descElem) descElem.value = content.heroDescription;
+}
+
+// Save website content to localStorage
+function saveWebsiteContent() {
+    const siteTitle = document.getElementById('siteTitle').value.trim();
+    const siteTagline = document.getElementById('siteTagline').value.trim();
+    const heroHeading = document.getElementById('heroHeading').value.trim();
+    const heroDescription = document.getElementById('heroDescription').value.trim();
+
+    if (!siteTitle || !siteTagline || !heroHeading || !heroDescription) {
+        showAlert('Please fill in all fields!', 'error');
+        return;
+    }
+
+    const content = {
+        siteTitle,
+        siteTagline,
+        heroHeading,
+        heroDescription
+    };
+
+    localStorage.setItem(WEBSITE_STORAGE_KEY, JSON.stringify(content));
+    showAlert('Website content updated successfully!', 'success');
 }
