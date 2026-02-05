@@ -10,6 +10,7 @@ if (!requireAuth()) {
 document.addEventListener('DOMContentLoaded', function () {
     initializeDashboard();
     loadProperties();
+    loadUsers();
     setupEventListeners();
 });
 
@@ -380,4 +381,268 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.getElementById('propertyModal').classList.contains('active')) {
         closePropertyModal();
     }
+    if (e.key === 'Escape' && document.getElementById('userModal') && document.getElementById('userModal').classList.contains('active')) {
+        closeUserModal();
+    }
 });
+
+// ===========================
+// USER MANAGEMENT FUNCTIONS
+// ===========================
+
+const USER_STORAGE_KEY = 'thendral_admin_users';
+
+// Get default user data
+function getDefaultUserData() {
+    return [
+        { username: 'superadmin', name: 'Super Administrator', role: 'superadmin', status: 'Active', password: 'super123' },
+        { username: 'admin', name: 'Administrator', role: 'admin', status: 'Active', password: 'admin123' }
+    ];
+}
+
+// Get user data from localStorage or default
+function getUserData() {
+    const stored = localStorage.getItem(USER_STORAGE_KEY);
+    if (stored) {
+        try {
+            return JSON.parse(stored);
+        } catch (e) {
+            console.error('Error parsing stored user data:', e);
+            return getDefaultUserData();
+        }
+    }
+    return getDefaultUserData();
+}
+
+// Save user data to localStorage
+function saveUserData(data) {
+    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(data));
+}
+
+// Load and display users
+function loadUsers() {
+    const userData = getUserData();
+    const tbody = document.querySelector('#users tbody');
+
+    if (!tbody) return; // Exit if user section doesn't exist
+
+    tbody.innerHTML = '';
+
+    userData.forEach((user, index) => {
+        const row = document.createElement('tr');
+        const roleColor = user.role === 'superadmin' ? '#e63946' : '#1b9c85';
+        const statusColor = user.status === 'Active' ? '#28a745' : '#dc3545';
+
+        // Super admin can't be deleted
+        const deleteButton = user.role === 'superadmin'
+            ? ''
+            : `<button class="btn-icon btn-delete" onclick="deleteUser(${index})" title="Delete">🗑️</button>`;
+
+        row.innerHTML = `
+            <td>${user.username}</td>
+            <td>${user.name}</td>
+            <td><span style="color: ${roleColor}; font-weight: bold;">${user.role === 'superadmin' ? 'Super Admin' : 'Admin'}</span></td>
+            <td><span style="color: ${statusColor};">${user.status}</span></td>
+            <td>
+                <div class="action-buttons">
+                    <button class="btn-icon btn-edit" onclick="editUser(${index})" title="Edit">✏️</button>
+                    ${deleteButton}
+                </div>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Open add user modal
+function openAddUserModal() {
+    // Create modal if it doesn't exist
+    if (!document.getElementById('userModal')) {
+        createUserModal();
+    }
+
+    document.getElementById('userModalTitle').textContent = 'Add New User';
+    document.getElementById('userSubmitBtnText').textContent = 'Add User';
+    document.getElementById('userForm').reset();
+    document.getElementById('editUserIndex').value = '';
+    document.getElementById('userPasswordGroup').style.display = 'block';
+    document.getElementById('userModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Edit user
+function editUser(index) {
+    const userData = getUserData();
+    const user = userData[index];
+
+    // Create modal if it doesn't exist
+    if (!document.getElementById('userModal')) {
+        createUserModal();
+    }
+
+    document.getElementById('userModalTitle').textContent = 'Edit User';
+    document.getElementById('userSubmitBtnText').textContent = 'Update User';
+
+    document.getElementById('username').value = user.username;
+    document.getElementById('fullName').value = user.name;
+    document.getElementById('userRole').value = user.role;
+    document.getElementById('userStatus').value = user.status;
+
+    // Hide password field when editing (optional: can be shown to change password)
+    document.getElementById('userPasswordGroup').style.display = 'none';
+
+    document.getElementById('editUserIndex').value = index;
+
+    document.getElementById('userModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Delete user
+function deleteUser(index) {
+    const userData = getUserData();
+    const user = userData[index];
+
+    // Prevent deleting super admin
+    if (user.role === 'superadmin') {
+        showAlert('Cannot delete Super Administrator!', 'error');
+        return;
+    }
+
+    if (!confirm(`Are you sure you want to delete user "${user.username}"?`)) {
+        return;
+    }
+
+    userData.splice(index, 1);
+    saveUserData(userData);
+    loadUsers();
+    showAlert(`User "${user.username}" deleted successfully!`, 'success');
+}
+
+// Close user modal
+function closeUserModal() {
+    document.getElementById('userModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Handle user form submission
+function handleUserSubmit(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const userRole = document.getElementById('userRole').value;
+    const userStatus = document.getElementById('userStatus').value;
+    const password = document.getElementById('userPassword').value;
+    const editUserIndex = document.getElementById('editUserIndex').value;
+
+    const userData = getUserData();
+
+    if (editUserIndex !== '') {
+        // Edit existing user
+        const index = parseInt(editUserIndex);
+        userData[index].username = username;
+        userData[index].name = fullName;
+        userData[index].role = userRole;
+        userData[index].status = userStatus;
+
+        // Update password if provided
+        if (password) {
+            userData[index].password = password;
+        }
+
+        showAlert('User updated successfully!', 'success');
+    } else {
+        // Add new user
+        // Check if username already exists
+        if (userData.some(u => u.username === username)) {
+            showAlert('Username already exists!', 'error');
+            return;
+        }
+
+        if (!password) {
+            showAlert('Password is required for new users!', 'error');
+            return;
+        }
+
+        const newUser = {
+            username: username,
+            name: fullName,
+            role: userRole,
+            status: userStatus,
+            password: password
+        };
+
+        userData.push(newUser);
+        showAlert('User added successfully!', 'success');
+    }
+
+    saveUserData(userData);
+    loadUsers();
+    closeUserModal();
+}
+
+// Create user modal dynamically
+function createUserModal() {
+    const modalHTML = `
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="userModalTitle">Add New User</h2>
+                <button class="modal-close" onclick="closeUserModal()">×</button>
+            </div>
+
+            <form id="userForm" onsubmit="handleUserSubmit(event)">
+                <input type="hidden" id="editUserIndex" />
+
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" required placeholder="e.g., john.doe" />
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required placeholder="e.g., John Doe" />
+                </div>
+
+                <div class="form-group">
+                    <label for="userRole">Role *</label>
+                    <select id="userRole" required>
+                        <option value="">Select Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="superadmin">Super Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="userStatus">Status *</label>
+                    <select id="userStatus" required>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="userPasswordGroup">
+                    <label for="userPassword">Password *</label>
+                    <input type="password" id="userPassword" placeholder="Enter password" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeUserModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span id="userSubmitBtnText">Add User</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Close modal on outside click
+    document.getElementById('userModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeUserModal();
+        }
+    });
+}
