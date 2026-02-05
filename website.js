@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     syncWebsiteContent();
     syncSettings();
+    setupAdminShortcut();
 });
 
 function syncWebsiteContent() {
@@ -102,5 +103,15 @@ function syncSettings() {
 
     } catch (e) {
         console.error('Error syncing settings:', e);
+    }
+}
+
+function setupAdminShortcut() {
+    const siteTitle = document.querySelector('.logo-container h1') || document.querySelector('.logo-container h1 a');
+    if (siteTitle) {
+        siteTitle.addEventListener('dblclick', function () {
+            window.location.href = 'admin-login.html';
+        });
+        siteTitle.style.cursor = 'pointer';
     }
 }
