@@ -268,12 +268,12 @@
   </header>
 
   <section id="contact" class="enquiry">
-    <h2 class="section-title">ENQUIRE NOW</h2>
+    <h2 class="section-title" id="contact-title">ENQUIRE NOW</h2>
     <form action="mailto:info@thendralproperties.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Name" required />
       <input type="tel" name="mobile" placeholder="Mobile Number" required />
       <input type="email" name="email" placeholder="Email" required />
-      <select name="city" required>
+      <select name="city" id="contact-city-select" required>
         <option>Select City</option>
         <option>Chennai</option>
         <option>Coimbatore</option>
@@ -292,17 +292,22 @@
 
   <footer>
     <div>
-      <h3>GET IN TOUCH</h3>
-      <p>📞 +91 98765 43210</p>
-      <p>✉️ info@thendralproperties.com</p>
+      <h3 id="footer-contact-title">GET IN TOUCH</h3>
+      <div id="footer-contact-info">
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ info@thendralproperties.com</p>
+        <p id="footer-address">No. 123, Real Estate Tower, Anna Salai, Chennai - 600002</p>
+      </div>
     </div>
     <div>
       <h3>QUICK LINKS</h3>
-      <a href="index.html">Home</a>
-      <a href="properties.html">Properties</a>
-      <a href="about.html">About Us</a>
+      <div id="footer-quick-links">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="about.html">About Us</a>
+      </div>
     </div>
-    <div class="copyright">
+    <div class="copyright" id="footer-copyright">
       © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
     </div>
   </footer>
@@ -312,6 +317,7 @@
   </div>
 
 
+  <script src="website.js"></script>
 </body>
 
 </html>
