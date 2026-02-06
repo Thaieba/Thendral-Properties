@@ -31,8 +31,8 @@
   </header>
 
   <section id="about" class="about">
-    <h2 class="section-title">ABOUT THENDRAL PROPERTIES</h2>
-    <p>
+    <h2 class="section-title" id="about-title">ABOUT THENDRAL PROPERTIES</h2>
+    <p id="about-main-text">
       Founded in 2010, Thendral Properties is a leading real estate developer based out of Chennai. We offer a wide
       range of properties, from apartments to independent villas, all equipped with lifestyle amenities. Our projects
       cover luxury, mid-range, and affordable categories, meeting the needs of different customers.
@@ -47,8 +47,8 @@
   </section>
 
   <section class="trust-section" id="trust">
-    <h2 class="section-title">WHY TRUST THENDRAL PROPERTIES</h2>
-    <div class="trust-badges">
+    <h2 class="section-title" id="about-trust-title">WHY TRUST THENDRAL PROPERTIES</h2>
+    <div class="trust-badges" id="about-trust-container">
       <div class="trust-badge">
         <span class="trust-badge-icon">🏆</span>
         <h3>Award Winning</h3>
@@ -74,17 +74,22 @@
 
   <footer>
     <div>
-      <h3>GET IN TOUCH</h3>
-      <p>📞 +91 98765 43210</p>
-      <p>✉️ info@thendralproperties.com</p>
+      <h3 id="footer-contact-title">GET IN TOUCH</h3>
+      <div id="footer-contact-info">
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ info@thendralproperties.com</p>
+        <p id="footer-address">No. 123, Real Estate Tower, Anna Salai, Chennai - 600002</p>
+      </div>
     </div>
     <div>
       <h3>QUICK LINKS</h3>
-      <a href="index.html">Home</a>
-      <a href="properties.html">Properties</a>
-      <a href="contact.html">Contact</a>
+      <div id="footer-quick-links">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-    <div class="copyright">
+    <div class="copyright" id="footer-copyright">
       © 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu
     </div>
   </footer>
@@ -94,6 +99,7 @@
   </div>
 
 
+  <script src="website.js"></script>
 </body>
 
 </html>
