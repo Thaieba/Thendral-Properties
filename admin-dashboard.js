@@ -726,52 +726,253 @@ function getDefaultWebsiteContent() {
         siteTitle: 'THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU',
         siteTagline: 'Trust Meets Living',
         heroHeading: 'Where Trust Meets Timeless Living',
-        heroDescription: "Premium apartments, villas & plots in Tamil Nadu's most desirable locations."
+        heroDescription: "Premium apartments, villas & plots in Tamil Nadu's most desirable locations.",
+        whyChooseUsTitle: 'Why Choose Us',
+        whyChooseUs: [
+            { icon: '🏆', target: '500', suffix: '+ Projects', title: 'Premium Projects', desc: 'Delivering excellence across Tamil Nadu with our carefully curated selection of properties.' },
+            { icon: '👥', target: '10000', suffix: '+ Families', title: 'Happy Families', desc: 'Trusted by thousands of families who have made Thendral their home.' },
+            { icon: '⭐', target: '15', suffix: '+ Years', title: 'Industry Experience', desc: 'Over a decade of excellence in real estate and customer satisfaction.' },
+            { icon: '🌟', target: '98', suffix: '%', title: 'Client Satisfaction', desc: 'Maintaining the highest standards of service and customer care.' }
+        ],
+        aboutContent: {
+            title: 'ABOUT THENDRAL PROPERTIES',
+            trustTitle: 'WHY TRUST THENDRAL PROPERTIES',
+            mainText: "Founded in 2010, Thendral Properties is a leading real estate developer based out of Chennai. We offer a wide range of properties, from apartments to independent villas, all equipped with lifestyle amenities. Our projects cover luxury, mid-range, and affordable categories, meeting the needs of different customers.\n\nBeyond Chennai, we've expanded into other major cities like Coimbatore, Trichy, Madurai, Tirunelveli, Salem, Virudhunagar, Thanjavur, Kanyakumari, and Thoothukudi. We focus on delivering quality homes with committed completion timelines.\n\nOur emphasis on research and delivery of a seamless living experience over the last decade ensures customer satisfaction. We have also launched ventures in commercial real estate and industrial projects.",
+            trustBadges: [
+                { icon: '🏆', title: 'Award Winning', desc: 'Recognized by industry leaders for excellence in real estate development and customer service' },
+                { icon: '🔐', title: '100% Transparent', desc: 'Complete clarity in pricing, legal documentation, and project timelines for your peace of mind' },
+                { icon: '⚡', title: 'On-Time Delivery', desc: '15+ years of commitment to delivering projects on schedule with premium quality standards' },
+                { icon: '👥', title: '5000+ Happy Customers', desc: 'Trusted by thousands of families across Tamil Nadu for their dream homes' }
+            ]
+        },
+        contactTitle: 'ENQUIRE NOW',
+        contactCities: ['Chennai', 'Coimbatore', 'Trichy', 'Tirunelveli', 'Madurai', 'Salem', 'Virudhunagar', 'Thanjavur', 'Kanyakumari', 'Thoothukudi'],
+        contactAddress: 'No. 123, Real Estate Tower,\nAnna Salai, Chennai - 600002,\nTamil Nadu, India.',
+        footerCopyright: '© 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu',
+        quickLinks: [
+            { label: 'Properties', url: 'properties.html' },
+            { label: 'About Us', url: 'about.html' },
+            { label: 'Contact', url: 'contact.html' }
+        ]
     };
 }
 
 // Load website content from localStorage or default
 function loadWebsiteContent() {
     const stored = localStorage.getItem(WEBSITE_STORAGE_KEY);
-    let content = getDefaultWebsiteContent();
+    const defaults = getDefaultWebsiteContent();
+    let content = defaults;
 
     if (stored) {
         try {
-            content = JSON.parse(stored);
+            const parsed = JSON.parse(stored);
+            // Deep merge to ensure new fields (like Titles and Cities) are available even if storage is old
+            content = {
+                ...defaults,
+                ...parsed,
+                aboutContent: {
+                    ...defaults.aboutContent,
+                    ...(parsed.aboutContent || {})
+                }
+            };
         } catch (e) {
             console.error('Error parsing stored website content:', e);
         }
     }
 
-    // Update UI
+    // Update UI General Site Info
     const titleElem = document.getElementById('siteTitle');
     const taglineElem = document.getElementById('siteTagline');
     const headingElem = document.getElementById('heroHeading');
     const descElem = document.getElementById('heroDescription');
+    const whyChooseUsTitleElem = document.getElementById('whyChooseUsTitle');
+    const aboutTitleElem = document.getElementById('aboutTitle');
+    const aboutTrustTitleElem = document.getElementById('aboutTrustTitle');
+    const aboutMainElem = document.getElementById('aboutMainText');
+    const contactTitleElem = document.getElementById('contactTitle');
+    const contactAddrElem = document.getElementById('contactAddress');
+    const copyrightElem = document.getElementById('footerCopyright');
 
-    if (titleElem) titleElem.value = content.siteTitle;
-    if (taglineElem) taglineElem.value = content.siteTagline;
-    if (headingElem) headingElem.value = content.heroHeading;
-    if (descElem) descElem.value = content.heroDescription;
+    if (titleElem) titleElem.value = content.siteTitle || '';
+    if (taglineElem) taglineElem.value = content.siteTagline || '';
+    if (headingElem) headingElem.value = content.heroHeading || '';
+    if (descElem) descElem.value = content.heroDescription || '';
+    if (whyChooseUsTitleElem) whyChooseUsTitleElem.value = content.whyChooseUsTitle || '';
+    if (aboutTitleElem) aboutTitleElem.value = content.aboutContent?.title || '';
+    if (aboutTrustTitleElem) aboutTrustTitleElem.value = content.aboutContent?.trustTitle || '';
+    if (aboutMainElem) aboutMainElem.value = content.aboutContent?.mainText || '';
+    if (contactTitleElem) contactTitleElem.value = content.contactTitle || '';
+    if (contactAddrElem) contactAddrElem.value = content.contactAddress || '';
+    if (copyrightElem) copyrightElem.value = content.footerCopyright || '';
+
+    // Populate Why Choose Us
+    const whyChooseUsContainer = document.getElementById('whyChooseUsContainer');
+    if (whyChooseUsContainer && content.whyChooseUs) {
+        whyChooseUsContainer.innerHTML = '';
+        content.whyChooseUs.forEach((badge, index) => {
+            const card = document.createElement('div');
+            card.className = 'editor-card';
+            card.innerHTML = `
+                <h4>Badge ${index + 1}</h4>
+                <div class="form-group"><label>Icon (Emoji)</label><input type="text" class="wcu-icon" value="${badge.icon}"></div>
+                <div class="form-group"><label>Number</label><input type="text" class="wcu-target" value="${badge.target}"></div>
+                <div class="form-group"><label>Suffix</label><input type="text" class="wcu-suffix" value="${badge.suffix}"></div>
+                <div class="form-group"><label>Title</label><input type="text" class="wcu-title" value="${badge.title}"></div>
+                <div class="form-group"><label>Description</label><textarea class="wcu-desc">${badge.desc}</textarea></div>
+            `;
+            whyChooseUsContainer.appendChild(card);
+        });
+    }
+
+    // Populate About Us Trust Badges
+    const aboutTrustContainer = document.getElementById('aboutTrustContainer');
+    if (aboutTrustContainer && content.aboutContent?.trustBadges) {
+        aboutTrustContainer.innerHTML = '';
+        content.aboutContent.trustBadges.forEach((badge, index) => {
+            const card = document.createElement('div');
+            card.className = 'editor-card';
+            card.innerHTML = `
+                <h4>Trust Badge ${index + 1}</h4>
+                <div class="form-group"><label>Icon (Emoji)</label><input type="text" class="atb-icon" value="${badge.icon}"></div>
+                <div class="form-group"><label>Title</label><input type="text" class="atb-title" value="${badge.title}"></div>
+                <div class="form-group"><label>Description</label><textarea class="atb-desc">${badge.desc}</textarea></div>
+            `;
+            aboutTrustContainer.appendChild(card);
+        });
+    }
+
+    // Populate Quick Links
+    const quickLinksContainer = document.getElementById('quickLinksContainer');
+    if (quickLinksContainer) {
+        quickLinksContainer.innerHTML = '';
+        if (content.quickLinks) {
+            content.quickLinks.forEach(link => {
+                addQuickLinkField(link.label, link.url);
+            });
+        }
+    }
+
+    // Populate Contact Cities
+    const contactCitiesContainer = document.getElementById('contactCitiesContainer');
+    if (contactCitiesContainer) {
+        contactCitiesContainer.innerHTML = '';
+        if (content.contactCities) {
+            content.contactCities.forEach(city => {
+                addCityField(city);
+            });
+        }
+    }
+}
+
+// Add City Field
+function addCityField(cityName = '') {
+    const container = document.getElementById('contactCitiesContainer');
+    const div = document.createElement('div');
+    div.className = 'link-item';
+    div.innerHTML = `
+        <input type="text" class="city-name" placeholder="City Name" value="${cityName}" style="flex: 1;">
+        <button type="button" class="btn-icon btn-delete" onclick="this.parentElement.remove()">🗑️</button>
+    `;
+    container.appendChild(div);
+}
+
+// Add Quick Link Field
+function addQuickLinkField(label = '', url = '') {
+    const container = document.getElementById('quickLinksContainer');
+    const div = document.createElement('div');
+    div.className = 'link-item';
+    div.innerHTML = `
+        <input type="text" class="ql-label" placeholder="Label" value="${label}" style="flex: 1;">
+        <input type="text" class="ql-url" placeholder="URL" value="${url}" style="flex: 1;">
+        <button type="button" class="btn-icon btn-delete" onclick="this.parentElement.remove()">🗑️</button>
+    `;
+    container.appendChild(div);
 }
 
 // Save website content to localStorage
 function saveWebsiteContent() {
+    // Basic fields
     const siteTitle = document.getElementById('siteTitle').value.trim();
     const siteTagline = document.getElementById('siteTagline').value.trim();
     const heroHeading = document.getElementById('heroHeading').value.trim();
     const heroDescription = document.getElementById('heroDescription').value.trim();
+    const whyChooseUsTitle = document.getElementById('whyChooseUsTitle').value.trim();
+    const aboutTitle = document.getElementById('aboutTitle').value.trim();
+    const aboutTrustTitle = document.getElementById('aboutTrustTitle').value.trim();
+    const aboutMainText = document.getElementById('aboutMainText').value.trim();
+    const contactTitle = document.getElementById('contactTitle').value.trim();
+    const contactAddress = document.getElementById('contactAddress').value.trim();
+    const footerCopyright = document.getElementById('footerCopyright').value.trim();
 
-    if (!siteTitle || !siteTagline || !heroHeading || !heroDescription) {
-        showAlert('Please fill in all fields!', 'error');
+    if (!siteTitle || !siteTagline || !heroHeading) {
+        showAlert('Please fill in essential fields!', 'error');
         return;
     }
+
+    // Gater Why Choose Us
+    const whyChooseUs = [];
+    const wcuCards = document.querySelectorAll('#whyChooseUsContainer .editor-card');
+    wcuCards.forEach(card => {
+        whyChooseUs.push({
+            icon: card.querySelector('.wcu-icon').value.trim(),
+            target: card.querySelector('.wcu-target').value.trim(),
+            suffix: card.querySelector('.wcu-suffix').value.trim(),
+            title: card.querySelector('.wcu-title').value.trim(),
+            desc: card.querySelector('.wcu-desc').value.trim()
+        });
+    });
+
+    // Gather About Us Trust Badges
+    const aboutTrustBadges = [];
+    const atbCards = document.querySelectorAll('#aboutTrustContainer .editor-card');
+    atbCards.forEach(card => {
+        aboutTrustBadges.push({
+            icon: card.querySelector('.atb-icon').value.trim(),
+            title: card.querySelector('.atb-title').value.trim(),
+            desc: card.querySelector('.atb-desc').value.trim()
+        });
+    });
+
+    // Gather Contact Cities
+    const contactCities = [];
+    const cityItems = document.querySelectorAll('.city-name');
+    cityItems.forEach(item => {
+        const cityName = item.value.trim();
+        if (cityName) contactCities.push(cityName);
+    });
+
+    // Gather Quick Links
+    const quickLinks = [];
+    const qlItems = document.querySelectorAll('.link-item');
+    qlItems.forEach(item => {
+        const labelElem = item.querySelector('.ql-label');
+        if (labelElem) {
+            const label = labelElem.value.trim();
+            const url = item.querySelector('.ql-url').value.trim();
+            if (label && url) {
+                quickLinks.push({ label, url });
+            }
+        }
+    });
 
     const content = {
         siteTitle,
         siteTagline,
         heroHeading,
-        heroDescription
+        heroDescription,
+        whyChooseUsTitle,
+        whyChooseUs,
+        aboutContent: {
+            title: aboutTitle,
+            trustTitle: aboutTrustTitle,
+            mainText: aboutMainText,
+            trustBadges: aboutTrustBadges
+        },
+        contactTitle,
+        contactCities,
+        contactAddress,
+        footerCopyright,
+        quickLinks
     };
 
     localStorage.setItem(WEBSITE_STORAGE_KEY, JSON.stringify(content));
