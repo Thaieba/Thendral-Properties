@@ -14,33 +14,118 @@ function syncWebsiteContent() {
     try {
         const content = JSON.parse(stored);
 
-        // Update Page Title (if it's the home page or general title)
+        // Update Page Title
         if (content.siteTitle) {
-            // Only update if it contains the brand name to avoid overwriting specific page titles
             if (document.title.includes('THENDRAL PROPERTIES')) {
                 const pagePrefix = document.title.split('|')[0].trim();
                 document.title = `${pagePrefix} | ${content.siteTitle}`;
             }
         }
 
-        // Update Hero Section (index.html)
-        const heroHeading = document.querySelector('.hero h2');
-        const heroDesc = document.querySelector('.hero p');
-
-        if (heroHeading && content.heroHeading) {
-            heroHeading.textContent = content.heroHeading;
-        }
-        if (heroDesc && content.heroDescription) {
-            heroDesc.textContent = content.heroDescription;
-        }
-
         // Update Tagline in Header
         const headerTaglines = document.querySelectorAll('.header-tagline');
         headerTaglines.forEach(tagline => {
-            if (content.siteTagline) {
-                tagline.textContent = content.siteTagline;
+            if (content.siteTagline) tagline.textContent = content.siteTagline;
+        });
+
+        // 1. Update Hero Section (index.html)
+        const heroHeading = document.querySelector('.hero h2');
+        const heroDesc = document.querySelector('.hero p');
+        if (heroHeading && content.heroHeading) heroHeading.textContent = content.heroHeading;
+        if (heroDesc && content.heroDescription) heroDesc.textContent = content.heroDescription;
+
+        // 2. Update Why Choose Us (index.html)
+        const wcuTitle = document.getElementById('wcu-title');
+        if (wcuTitle && content.whyChooseUsTitle) wcuTitle.textContent = content.whyChooseUsTitle;
+
+        const wcuContainer = document.getElementById('wcu-badges-container');
+        if (wcuContainer && content.whyChooseUs) {
+            wcuContainer.innerHTML = '';
+            content.whyChooseUs.forEach(badge => {
+                const div = document.createElement('div');
+                div.className = 'trust-badge';
+                div.innerHTML = `
+                    <span class="trust-badge-icon">${badge.icon}</span>
+                    <div class="animated-number" data-target="${badge.target}">0</div>
+                    <span class="number-suffix">${badge.suffix}</span>
+                    <h3>${badge.title}</h3>
+                    <p>${badge.desc}</p>
+                `;
+                wcuContainer.appendChild(div);
+            });
+            // Re-trigger numbers animation if defined in index.html
+            if (typeof animateNumbers === 'function') animateNumbers();
+        }
+
+        // 3. Update About Us Page Content (about.html)
+        const aboutTitle = document.getElementById('about-title');
+        const aboutTrustTitle = document.getElementById('about-trust-title');
+        if (aboutTitle && content.aboutContent?.title) aboutTitle.textContent = content.aboutContent.title;
+        if (aboutTrustTitle && content.aboutContent?.trustTitle) aboutTrustTitle.textContent = content.aboutContent.trustTitle;
+
+        const aboutMainText = document.getElementById('about-main-text');
+        if (aboutMainText && content.aboutContent?.mainText) {
+            aboutMainText.innerHTML = content.aboutContent.mainText.replace(/\n/g, '<br>');
+        }
+        const aboutTrustContainer = document.getElementById('about-trust-container');
+        if (aboutTrustContainer && content.aboutContent?.trustBadges) {
+            aboutTrustContainer.innerHTML = '';
+            content.aboutContent.trustBadges.forEach(badge => {
+                const div = document.createElement('div');
+                div.className = 'trust-badge';
+                div.innerHTML = `
+                    <span class="trust-badge-icon">${badge.icon}</span>
+                    <h3>${badge.title}</h3>
+                    <p>${badge.desc}</p>
+                `;
+                aboutTrustContainer.appendChild(div);
+            });
+        }
+
+        // 4. Update Contact Page & Footer
+        const contactTitle = document.getElementById('contact-title');
+        if (contactTitle && content.contactTitle) contactTitle.textContent = content.contactTitle;
+
+        const citySelect = document.getElementById('contact-city-select');
+        if (citySelect && content.contactCities) {
+            // Keep the first "Select City" option if it exists
+            const firstOption = citySelect.options[0]?.text === 'Select City' ? citySelect.options[0] : null;
+            citySelect.innerHTML = '';
+            if (firstOption) citySelect.appendChild(firstOption);
+
+            content.contactCities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+
+        const footerAddress = document.getElementById('footer-address');
+        if (footerAddress && content.contactAddress) {
+            footerAddress.innerHTML = content.contactAddress.replace(/\n/g, '<br>');
+        }
+
+        const footerCopyright = document.getElementById('footer-copyright');
+        if (footerCopyright && content.footerCopyright) {
+            footerCopyright.textContent = content.footerCopyright;
+        }
+
+
+        // 5. Update Quick Links (Footer - all pages)
+        const qlContainers = document.querySelectorAll('#footer-quick-links');
+        qlContainers.forEach(container => {
+            if (content.quickLinks) {
+                container.innerHTML = '';
+                content.quickLinks.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.textContent = link.label;
+                    container.appendChild(a);
+                });
             }
         });
+
     } catch (e) {
         console.error('Error syncing website content:', e);
     }
