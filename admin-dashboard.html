@@ -32,7 +32,7 @@
                     <span class="icon">🏢</span>
                     <span>Property Management</span>
                 </div>
-                <div class="nav-item superadmin-only" data-section="website" id="navWebsite" style="display: none;">
+                <div class="nav-item" data-section="website" id="navWebsite">
                     <span class="icon">🌐</span>
                     <span>Website Editor</span>
                 </div>
@@ -147,15 +147,20 @@
                     <h2 style="padding: 20px; color: #0f4c5c;">Website Content Management</h2>
                     <div style="padding: 0 20px 20px;">
                         <form id="websiteForm">
-                            <div class="form-group">
-                                <label for="siteTitle">Site Title</label>
-                                <input type="text" id="siteTitle"
-                                    value="THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU" />
+                            <div class="editor-subtitle">General Site Info</div>
+                            <div class="editor-grid">
+                                <div class="form-group">
+                                    <label for="siteTitle">Site Title</label>
+                                    <input type="text" id="siteTitle"
+                                        value="THENDRAL PROPERTIES | REAL ESTATE IN TAMILNADU" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="siteTagline">Site Tagline</label>
+                                    <input type="text" id="siteTagline" value="Trust Meets Living" />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="siteTagline">Site Tagline</label>
-                                <input type="text" id="siteTagline" value="Trust Meets Living" />
-                            </div>
+
+                            <div class="editor-subtitle">Hero Section (Home Page)</div>
                             <div class="form-group">
                                 <label for="heroHeading">Hero Section Heading</label>
                                 <input type="text" id="heroHeading" value="Where Trust Meets Timeless Living" />
@@ -165,11 +170,77 @@
                                 <textarea
                                     id="heroDescription">Premium apartments, villas & plots in Tamil Nadu's most desirable locations.</textarea>
                             </div>
-                            <div class="form-actions">
-                                <button type="button" class="btn btn-primary" onclick="saveWebsiteContent()">
-                                    Save Changes
+
+                            <div class="editor-subtitle">Why Choose Us (Home Page)</div>
+                            <div class="form-group">
+                                <label for="whyChooseUsTitle">Section Title</label>
+                                <input type="text" id="whyChooseUsTitle" value="Why Choose Us" />
+                            </div>
+                            <div class="editor-grid" id="whyChooseUsContainer">
+                                <!-- Will be populated by JS -->
+                            </div>
+
+                            <div class="editor-subtitle">About Us Page</div>
+                            <div class="editor-grid">
+                                <div class="form-group">
+                                    <label for="aboutTitle">Main Section Title</label>
+                                    <input type="text" id="aboutTitle" value="ABOUT THENDRAL PROPERTIES" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="aboutTrustTitle">Trust Section Title</label>
+                                    <input type="text" id="aboutTrustTitle" value="WHY TRUST THENDRAL PROPERTIES" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="aboutMainText">Main Description Text</label>
+                                <textarea id="aboutMainText"></textarea>
+                            </div>
+                            <div class="editor-grid" id="aboutTrustContainer">
+                                <!-- Will be populated by JS -->
+                            </div>
+
+                            <div class="editor-subtitle">Contact Page</div>
+                            <div class="form-group">
+                                <label for="contactTitle">Contact Section Title</label>
+                                <input type="text" id="contactTitle" value="ENQUIRE NOW" />
+                            </div>
+                            <div class="editor-grid">
+                                <div class="form-group">
+                                    <label>City Dropdown Options</label>
+                                    <div class="links-list-container" id="contactCitiesContainer"
+                                        style="max-height: 200px; overflow-y: auto;">
+                                        <!-- Will be populated by JS -->
+                                    </div>
+                                    <button type="button" class="btn-add-item" onclick="addCityField()">+ Add
+                                        City</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactAddress">Business Address (Footer)</label>
+                                    <textarea id="contactAddress"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="footerCopyright">Footer Copyright Text</label>
+                                    <input type="text" id="footerCopyright"
+                                        value="© 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu" />
+                                </div>
+                            </div>
+
+                            <div class="editor-subtitle">Footer Quick Links</div>
+                            <div class="form-group">
+                                <div class="links-list-container" id="quickLinksContainer">
+                                    <!-- Will be populated by JS -->
+                                </div>
+                                <button type="button" class="btn-add-item" onclick="addQuickLinkField()">+ Add
+                                    Link</button>
+                            </div>
+
+                            <div class="form-actions" style="margin-top: 40px;">
+                                <button type="button" class="btn btn-primary" onclick="saveWebsiteContent()"
+                                    style="width: 100%; justify-content: center; padding: 18px;">
+                                    🚀 Save All Website Changes
                                 </button>
                             </div>
+
                         </form>
                     </div>
                 </div>
