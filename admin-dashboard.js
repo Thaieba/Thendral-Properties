@@ -53,6 +53,16 @@ function setupEventListeners() {
 
 // Navigate to section
 function navigateToSection(sectionId) {
+    const session = getSession();
+    const superAdminSections = ['website', 'users', 'settings'];
+
+    // Security check: regular admins cannot access superadmin sections
+    if (session && session.role !== 'superadmin' && superAdminSections.includes(sectionId)) {
+        console.warn(`Unauthorized access attempt to ${sectionId} by ${session.role}`);
+        navigateToSection('dashboard');
+        return;
+    }
+
     // Update active nav item
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
