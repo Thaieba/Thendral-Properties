@@ -763,7 +763,12 @@ function getDefaultWebsiteContent() {
             { label: 'Properties', url: 'properties.html' },
             { label: 'About Us', url: 'about.html' },
             { label: 'Contact', url: 'contact.html' }
-        ]
+        ],
+        floatingButton: {
+            enabled: true,
+            whatsappNumber: '919876543210',
+            callNumber: '+91 98765 43210'
+        }
     };
 }
 
@@ -871,6 +876,17 @@ function loadWebsiteContent() {
                 addCityField(city);
             });
         }
+    }
+
+    // Populate Floating Button Settings
+    const fbEnabledElem = document.getElementById('fbEnabled');
+    const fbWhatsappElem = document.getElementById('fbWhatsapp');
+    const fbCallElem = document.getElementById('fbCall');
+
+    if (fbEnabledElem && content.floatingButton) {
+        fbEnabledElem.value = content.floatingButton.enabled.toString();
+        fbWhatsappElem.value = content.floatingButton.whatsappNumber || '';
+        fbCallElem.value = content.floatingButton.callNumber || '';
     }
 }
 
@@ -983,6 +999,17 @@ function saveWebsiteContent() {
         contactAddress,
         footerCopyright,
         quickLinks
+    };
+
+    // Gather Floating Button Settings
+    const fbEnabled = document.getElementById('fbEnabled').value === 'true';
+    const fbWhatsapp = document.getElementById('fbWhatsapp').value.trim();
+    const fbCall = document.getElementById('fbCall').value.trim();
+
+    content.floatingButton = {
+        enabled: fbEnabled,
+        whatsappNumber: fbWhatsapp,
+        callNumber: fbCall
     };
 
     localStorage.setItem(WEBSITE_STORAGE_KEY, JSON.stringify(content));
