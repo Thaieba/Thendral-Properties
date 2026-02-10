@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     syncWebsiteContent();
     syncSettings();
     setupAdminShortcut();
+    setupCallFloatingButton();
 });
 
 function syncWebsiteContent() {
@@ -199,4 +200,164 @@ function setupAdminShortcut() {
         });
         siteTitle.style.cursor = 'pointer';
     }
+}
+
+function setupCallFloatingButton() {
+    // 1. Get Settings
+    const storedContent = localStorage.getItem('thendral_website_content');
+    const storedSettings = localStorage.getItem('thendral_admin_settings');
+
+    let websiteContent = {};
+    let adminSettings = {};
+
+    try {
+        if (storedContent) websiteContent = JSON.parse(storedContent);
+        if (storedSettings) adminSettings = JSON.parse(storedSettings);
+    } catch (e) {
+        console.error('Error parsing settings for floating button:', e);
+    }
+
+    const config = websiteContent.floatingButton || {
+        enabled: true,
+        whatsappNumber: adminSettings.contactPhone || '919876543210',
+        callNumber: adminSettings.contactPhone || '+91 98765 43210'
+    };
+
+    if (config.enabled === false) return;
+
+    // 2. Inject CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .floating-call-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .call-options {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+            transform: translateY(10px);
+            opacity: 0;
+        }
+
+        .call-options.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .call-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .call-option-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-btn { background-color: #25D366; }
+        .phone-btn { background-color: #007bff; }
+
+        .main-call-btn {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #f77f00, #fcbf49);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(247, 127, 0, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .main-call-btn:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .main-call-btn.active {
+            background: #e63946;
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            .floating-call-container {
+                bottom: 85px; /* Stay above the mobile enquire bar if it exists */
+                right: 20px;
+            }
+            .main-call-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // 3. Inject HTML
+    const container = document.createElement('div');
+    container.className = 'floating-call-container';
+
+    // Clean numbers for links
+    let whatsappNum = config.whatsappNumber || adminSettings.contactPhone || '919876543210';
+    let callNum = config.callNumber || adminSettings.contactPhone || '+91 98765 43210';
+
+    const cleanWhatsapp = whatsappNum.replace(/\s+/g, '').replace('+', '');
+    const cleanPhone = callNum.replace(/\s+/g, '').replace('+', '');
+
+    container.innerHTML = `
+        <div class="call-options" id="callOptions">
+            <a href="https://wa.me/${cleanWhatsapp}" class="call-option-btn whatsapp-btn" target="_blank">
+                <span>💬</span> WhatsApp Message
+            </a>
+            <a href="tel:${cleanPhone}" class="call-option-btn phone-btn">
+                <span>📞</span> Call Us Now
+            </a>
+        </div>
+        <button class="main-call-btn" id="mainCallBtn" title="Call Us">
+            <span>📞</span>
+        </button>
+    `;
+    document.body.appendChild(container);
+
+    // 4. Add Event Listeners
+    const mainBtn = document.getElementById('mainCallBtn');
+    const options = document.getElementById('callOptions');
+
+    mainBtn.addEventListener('click', () => {
+        const isActive = options.classList.toggle('active');
+        mainBtn.classList.toggle('active');
+        mainBtn.querySelector('span').textContent = isActive ? '×' : '📞';
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!container.contains(e.target) && options.classList.contains('active')) {
+            options.classList.remove('active');
+            mainBtn.classList.remove('active');
+            mainBtn.querySelector('span').textContent = '+';
+        }
+    });
 }
