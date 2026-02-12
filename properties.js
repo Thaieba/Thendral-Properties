@@ -144,8 +144,11 @@ function openModal(city) {
     const card = document.createElement('div');
     card.className = 'modal-card';
 
-    // Get the image for this location, fallback to city image
-    const imageSrc = (imageMap[city] && imageMap[city][location.name]) || city.toLowerCase() + '.jpg';
+    // Get the image for this location
+    // 1. Check if property object has a custom image from admin
+    // 2. Fallback to the imageMap
+    // 3. Fallback to city-based default image
+    const imageSrc = location.image || (imageMap[city] && imageMap[city][location.name]) || city.toLowerCase() + '.jpg';
 
     card.innerHTML = `
       <img src="${imageSrc}" alt="${location.name}">
