@@ -291,11 +291,25 @@ if (enquiryForm) {
 
     // In a production environment, you would send this data to a backend API
     // For now, we'll show a success message
-    alert(`Thank you for your enquiry about ${projectName}! Our team will contact you shortly.`);
+    const successMsg = document.getElementById('enquiry-success-message');
+    const submitBtn = this.querySelector('button[type="submit"]');
 
-    // Reset form and close modal
-    this.reset();
-    closeEnquiryModal();
+    if (successMsg) {
+      successMsg.style.display = 'block';
+      if (submitBtn) submitBtn.style.display = 'none';
+
+      // Reset form and close modal after a delay
+      setTimeout(() => {
+        this.reset();
+        successMsg.style.display = 'none';
+        if (submitBtn) submitBtn.style.display = 'block';
+        closeEnquiryModal();
+      }, 3000);
+    } else {
+      alert(`Thank you for your enquiry about ${projectName}! Our team will contact you shortly.`);
+      this.reset();
+      closeEnquiryModal();
+    }
 
     // Optional: Log to console (for development/testing)
     console.log('Enquiry submitted for:', projectName);
