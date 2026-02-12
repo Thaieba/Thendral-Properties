@@ -262,6 +262,15 @@ function openAddPropertyModal() {
     document.getElementById('propertyId').value = '';
     document.getElementById('editCity').value = '';
     document.getElementById('editLocationIndex').value = '';
+
+    // Reset image preview
+    const imageInput = document.getElementById('propertyImage');
+    if (imageInput) imageInput.value = '';
+    const previewContainer = document.getElementById('imagePreviewContainer');
+    if (previewContainer) previewContainer.style.display = 'none';
+    const previewImg = document.getElementById('imagePreview');
+    if (previewImg) previewImg.src = '';
+
     document.getElementById('propertyModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -279,6 +288,21 @@ function editProperty(city, index) {
     document.getElementById('propertyType').value = property.type;
     document.getElementById('status').value = property.status;
     document.getElementById('price').value = property.price;
+
+    // Handle image field
+    const imageInput = document.getElementById('propertyImage');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+
+    if (property.image) {
+        if (imageInput) imageInput.value = property.image;
+        if (imagePreview) imagePreview.src = property.image;
+        if (previewContainer) previewContainer.style.display = 'block';
+    } else {
+        if (imageInput) imageInput.value = '';
+        if (imagePreview) imagePreview.src = '';
+        if (previewContainer) previewContainer.style.display = 'none';
+    }
 
     document.getElementById('editCity').value = city;
     document.getElementById('editLocationIndex').value = index;
@@ -323,6 +347,7 @@ function handlePropertySubmit(e) {
     const propertyType = document.getElementById('propertyType').value;
     const status = document.getElementById('status').value;
     const price = document.getElementById('price').value.trim();
+    const image = document.getElementById('propertyImage').value.trim();
 
     const editCity = document.getElementById('editCity').value;
     const editLocationIndex = document.getElementById('editLocationIndex').value;
@@ -335,6 +360,10 @@ function handlePropertySubmit(e) {
         status: status,
         price: price
     };
+
+    if (image) {
+        newProperty.image = image;
+    }
 
     if (editCity && editLocationIndex !== '') {
         // Edit existing property
@@ -374,6 +403,7 @@ function handlePropertySubmit(e) {
 // Show alert message
 function showAlert(message, type = 'info') {
     const alertContainer = document.getElementById('alertContainer');
+    if (!alertContainer) return;
 
     const alert = document.createElement('div');
     alert.className = `alert alert-${type}`;
@@ -386,6 +416,42 @@ function showAlert(message, type = 'info') {
         alert.remove();
     }, 5000);
 }
+
+// Remove property image
+function removePropertyImage() {
+    const imageInput = document.getElementById('propertyImage');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+
+    if (imageInput) imageInput.value = '';
+    if (imagePreview) imagePreview.src = '';
+    if (previewContainer) previewContainer.style.display = 'none';
+}
+
+// Setup real-time image preview
+document.addEventListener('DOMContentLoaded', function () {
+    const imageInput = document.getElementById('propertyImage');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+
+    if (imageInput && imagePreview && previewContainer) {
+        imageInput.addEventListener('input', function () {
+            const url = this.value.trim();
+            if (url) {
+                imagePreview.src = url;
+                previewContainer.style.display = 'block';
+            } else {
+                imagePreview.src = '';
+                previewContainer.style.display = 'none';
+            }
+        });
+
+        // Handle error (invalid image)
+        imagePreview.addEventListener('error', function () {
+            previewContainer.style.display = 'none';
+        });
+    }
+});
 
 // Close modal on outside click
 document.getElementById('propertyModal').addEventListener('click', function (e) {
