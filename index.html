@@ -480,6 +480,30 @@
       box-shadow: 0 6px 15px rgba(27, 156, 133, 0.4);
     }
 
+    .success-message {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .trust-section {
       background: linear-gradient(135deg, #f7f7f7, #ffffff);
       padding: 60px 40px;
@@ -762,6 +786,9 @@
       <a href="about.html">ABOUT US</a>
       <a href="contact.html">CONTACT</a>
     </nav>
+    <!-- Assuming the enquiry form would be placed here or in a similar logical location -->
+    <!-- This div is placed here based on the instruction's implied context, though no form is present in the original document -->
+    <div id="success-message" class="success-message" style="display: none;">Successfully submitted!</div>
   </header>
 
 
