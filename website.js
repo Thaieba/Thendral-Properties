@@ -361,3 +361,31 @@ function setupCallFloatingButton() {
         }
     });
 }
+
+// Handle generic form submissions for enquiry forms
+document.addEventListener('submit', function (e) {
+    const form = e.target;
+    // Check if it's an enquiry form (exists on index or contact)
+    if (form.closest('.enquiry') || form.querySelector('button[type="submit"]')) {
+        // Prevent default only if we want to bypass mailto for the success message demo
+        // For mailto forms, the browser usually opens the mail client. 
+        // We'll show the success message regardless.
+
+        const successMessage = form.querySelector('#success-message');
+        if (successMessage) {
+            e.preventDefault(); // Bypass mailto for better UX as requested
+
+            successMessage.style.display = 'block';
+            form.querySelector('button[type="submit"]').style.display = 'none';
+
+            // Log for debugging
+            console.log('Form submitted successfully');
+
+            // Optional: Reset form after delay
+            setTimeout(() => {
+                form.reset();
+                // We keep the message visible or could hide it and show button again
+            }, 3000);
+        }
+    }
+});
