@@ -106,6 +106,66 @@ function navigateToSection(sectionId) {
 // Property data management
 const PROPERTY_STORAGE_KEY = 'thendral_properties_data';
 
+// Image mapping for all cities (shared with properties.js)
+const imageMap = {
+    'Chennai': {
+        'T. Nagar': 'T.Nagar.jpg',
+        'Pallavaram': 'Pallavaram.jpg',
+        'Anna Nagar': 'Anna Nagar.jpg'
+    },
+    'Coimbatore': {
+        'RS Puram': 'RS Puram.jpg',
+        'Peelamedu': 'Peelamedu.jpg',
+        'Saravanampatti': 'Saravanampatti.jpg'
+    },
+    'Trichy': {
+        'Samayapuram': 'Samayapuram.jpg',
+        'Melur': 'Melur.jpg',
+        'Srirangam': 'Srirangam.jpg'
+    },
+    'Tirunelveli': {
+        'Palayamkottai': 'Palayamkottai.jpg',
+        'Vannarapettai': 'Vannarapettai.jpg',
+        'Melapalayam': 'Melapalayam.jpg'
+    },
+    'Madurai': {
+        'KK Nagar': 'KK Nagar.jpg',
+        'Anna Nagar': 'anna nagar(m).jpg',
+        'Othakadai': 'Othakadai.jpg'
+    },
+    'Salem': {
+        'Gugai': 'Gugai.jpg',
+        'Fairlands': 'Fairlands.jpg',
+        'Suramangalam': 'Suramangalam.jpg'
+    },
+    'Virudhunagar': {
+        'Sivakasi': 'Sivakasi.jpg',
+        'Aruppukkottai': 'Aruppukkottai.jpg',
+        'Rajapalayam': 'Rajapalayam.jpg'
+    },
+    'Thanjavur': {
+        'Kumbakonam': 'Kumbakonam.jpg',
+        'Papanasam': 'Papanasam.jpg',
+        'Thiruvaiyaru': 'Thiruvaiyaru.jpg'
+    },
+    'Kanyakumari': {
+        'Nagercoil': 'Nagercoil.jpg',
+        'Marthandam': 'Marthandam.jpg',
+        'Kuzhithurai': 'Kuzhithurai.jpg'
+    },
+    'Thoothukudi': {
+        'Tiruchendur': 'Tiruchendur.jpg',
+        'Sathankulam': 'Sathankulam.jpg',
+        'Ottapidaram': 'Ottapidaram.jpg'
+    }
+};
+
+// Get property image based on city and name
+function getPropertyImage(city, propertyName, customImage = null) {
+    if (customImage) return customImage;
+    return (imageMap[city] && imageMap[city][propertyName]) || (city ? city.toLowerCase() + '.jpg' : '');
+}
+
 // Get default property data
 function getDefaultPropertyData() {
     return {
@@ -294,9 +354,11 @@ function editProperty(city, index) {
     const imagePreview = document.getElementById('imagePreview');
     const previewContainer = document.getElementById('imagePreviewContainer');
 
-    if (property.image) {
-        if (imageInput) imageInput.value = property.image;
-        if (imagePreview) imagePreview.src = property.image;
+    const displayImage = getPropertyImage(city, property.name, property.image);
+
+    if (displayImage) {
+        if (imageInput) imageInput.value = displayImage;
+        if (imagePreview) imagePreview.src = displayImage;
         if (previewContainer) previewContainer.style.display = 'block';
     } else {
         if (imageInput) imageInput.value = '';
