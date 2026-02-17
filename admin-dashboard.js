@@ -886,7 +886,7 @@ function getDefaultWebsiteContent() {
         contactTitle: 'ENQUIRE NOW',
         contactCities: ['Chennai', 'Coimbatore', 'Trichy', 'Tirunelveli', 'Madurai', 'Salem', 'Virudhunagar', 'Thanjavur', 'Kanyakumari', 'Thoothukudi'],
         contactAddress: 'No. 123, Real Estate Tower,\nAnna Salai, Chennai - 600002,\nTamil Nadu, India.',
-        footerCopyright: '© 2024 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu',
+        footerCopyright: '© 2026 THENDRAL PROPERTIES. All Rights Reserved. | Designed with ❤️ for Tamil Nadu',
         quickLinks: [
             { label: 'Properties', url: 'properties.html' },
             { label: 'About Us', url: 'about.html' },
@@ -909,6 +909,14 @@ function loadWebsiteContent() {
     if (stored) {
         try {
             const parsed = JSON.parse(stored);
+
+            // Migration: Update Copyright Year from 2024 to 2026
+            if (parsed.footerCopyright && parsed.footerCopyright.includes('2024')) {
+                parsed.footerCopyright = parsed.footerCopyright.replace(/2024/g, '2026');
+                localStorage.setItem(WEBSITE_STORAGE_KEY, JSON.stringify(parsed));
+                console.log('Migrated copyright year in storage to 2026');
+            }
+
             // Deep merge to ensure new fields (like Titles and Cities) are available even if storage is old
             content = {
                 ...defaults,
