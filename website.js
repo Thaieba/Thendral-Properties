@@ -15,6 +15,13 @@ function syncWebsiteContent() {
     try {
         const content = JSON.parse(stored);
 
+        // Migration: Update Copyright Year from 2024 to 2026
+        if (content.footerCopyright && content.footerCopyright.includes('2024')) {
+            content.footerCopyright = content.footerCopyright.replace(/2024/g, '2026');
+            localStorage.setItem('thendral_website_content', JSON.stringify(content));
+            console.log('Migrated copyright year to 2026');
+        }
+
         // Update Page Title
         if (content.siteTitle) {
             if (document.title.includes('THENDRAL PROPERTIES')) {
